@@ -1,20 +1,19 @@
 /**
- * EcranTitre.js --- Solenn Cattin 
+ * Tuto_01.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe EcranTitre, affichant l'écran titre du jeu, et passant au premier niveau 
- * une fois que la touche espace est appuyée.
+ * Fichier comportant la classe Tuto_01
  * 
  * 
  * A FAIRE DANS LA SCENE :
- *  - Demander au joueur s'il veut faire le tuto, si oui, on va a la scene tuto, sinon on va direct au premier niveau
- *  - Bouton options (pour le son, les effets speciaux etc)
 */
 
-export default class EcranTitre extends Phaser.Scene {
+import Player from '../ENTITES/Player.js';
+
+export default class Tuto_01 extends Phaser.Scene {
 
     constructor() {
-        super({key : "EcranTitre"});
+        super({key : "Tuto_01"});
     }
 
 
@@ -25,8 +24,8 @@ export default class EcranTitre extends Phaser.Scene {
 
     preload() {
 
-        // Chargement de l'image du menu
-        //this.load.image('image_menu', 'assets/image_menu.png');
+        // Chargement des sprites de la protagoniste
+        //this.load.spritesheet('keiko_idle', 'ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
 
         
     }
@@ -39,11 +38,35 @@ export default class EcranTitre extends Phaser.Scene {
 
     create() {
 
+        // ----- AFFICHAGE DE LA SCENE -----
+
+
+        // ----- PROPRIETES DU JEU -----
+
         // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
         this.clavier = this.input.keyboard.createCursorKeys();
 
-        // Ajout de l'image du menu à l'écran
-        this.add.image(512, 288, "image_menu");
+
+
+        // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
+
+        this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
+
+
+        // ----- AFFICHAGE DES ENNEMIES -----
+
+
+        // ----- AFFICHAGE DE L'UI -----
+
+
+        // ----- CAMERA -----
+        // Redimensions du jeu selon le fichier Tiled
+        this.physics.world.setBounds(0, 0, 1280, 1280);
+        this.cameras.main.setBounds(0, 0, 1280, 1280);
+        
+        // Tracking de la caméra sur le joueur
+        this.cameras.main.startFollow(this.player);
+
 
     }
 
@@ -55,14 +78,7 @@ export default class EcranTitre extends Phaser.Scene {
 
     update() {
 
-        // Changement vers la premiere scene dès que le joueur appuie sur espace
-        if (Phaser.Input.Keyboard.JustDown(this.clavier.space)) {
-            
-            this.scene.start("Tuto_01", {
-                x: 448,
-                y: 432
-            });
-        }
+        this.player.updatePlayer();
     }
 
 
