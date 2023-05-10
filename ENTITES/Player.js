@@ -20,7 +20,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
 
-        this.invincible = false;
         this.isDodging = false;
         /*
         this.jump();
@@ -90,7 +89,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
                 this.isDodging = false
             })
 
-            
+
         }
 
     }
