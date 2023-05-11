@@ -7,6 +7,9 @@
 
 // Import de toutes les scènes utilisées dans le jeu
 import EcranTitre from "/NIVEAUX/EcranTitre.js";
+import Tuto from "/NIVEAUX/Tuto.js";
+import Shizuoka from "/NIVEAUX/Shizuoka.js";
+import Chantier from "/NIVEAUX/Chantier.js";
 
 
 // Configuration initiale
@@ -17,13 +20,13 @@ var config = {
         default: 'arcade',
         arcade: {
             //#TODO: changer la gravité ici pour rendre au mieux possible
-            gravity: { y: 300 },
+            gravity: { y: 700 },
             debug: true
         }
     },
 
     // Ajout des differentes scenes dans le jeu
-    scene: [EcranTitre],
+    scene: [EcranTitre, Tuto, Shizuoka, Chantier],
 
     // Activation de la possibilité de jouer à la manette
     input: {gamepad: true}
@@ -33,4 +36,4 @@ var config = {
 
 // Début du jeu, lancé sur la scène EcranTitre
 var game = new Phaser.Game(config);
-game.scene.start("EcranTitre"); 
+game.scene.start("Chantier"); 

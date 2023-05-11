@@ -1,5 +1,5 @@
 var dataPlayer = {
 
-    speed : 10,
-    speedUp : 10
+    speed : 200,
+    speedUp : 300
 }

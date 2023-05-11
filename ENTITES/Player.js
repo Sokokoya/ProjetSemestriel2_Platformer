@@ -14,13 +14,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
 
-        this.clavier = this.input.keyboard.createCursorKeys();
+        this.clavier = scene.input.keyboard.createCursorKeys();
 
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
 
         this.isDodging = false;
+        this.sautMural = true;
+        this.toucheBloquee = false;
         /*
         this.jump();
         this.dodge();
@@ -52,7 +54,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
         // si saut (espace, gamepad A)
-        if (this.clavier.SPACE.isDown && this.body.blocked.down) {
+        if (this.clavier.space.isDown) {
             this.jump();
         }
 
@@ -75,9 +77,57 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     jump() {
-        this.setVelocityY(-window.dataPlayer.speedUp);
 
-        //#TODO: mettre walljump simple
+        // Saut simple
+        if (this.body.blocked.down) {
+            this.setVelocityY(-window.dataPlayer.speedUp);
+        }
+
+
+        //#TODO: faire fonctionner le walljump
+        // Saut mural
+        if (this.body.blocked.right) {
+            console.log("bien blouqer");
+            if (this.sautMural) {
+                console.log("saute");
+
+                this.sautMural = false;
+                this.toucheBloquee = false;
+
+                setTimeout(function() {
+                    this.toucheBloquee = false;
+                }, 200);
+
+                setTimeout(function() {
+                    this.sautMural = true;
+                }, 500);
+
+                this.setVelocityY(-window.dataPlayer.speedUp);
+                this.setVelocityX(-window.dataPlayer.speed);
+            }
+        }
+
+        if (this.body.blocked.left) {
+            console.log("bien blouqer");
+            if (this.sautMural) {
+                console.log("saute");
+
+                this.sautMural = false;
+                this.toucheBloquee = false;
+
+                setTimeout(function() {
+                    this.toucheBloquee = false;
+                }, 200);
+
+                setTimeout(function() {
+                    this.sautMural = true;
+                }, 500);
+                
+                this.setVelocityY(-window.dataPlayer.speedUp);
+                this.setVelocityX(window.dataPlayer.speed);
+            }
+        }
+        
     }
 
 
@@ -103,8 +153,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     gettingHit() {
+        if (!isDodging) {
+            // fin + mort
+        }
 
-        // fin + mort
+        
 
     }
 
