@@ -6,6 +6,8 @@
  * 
  * 
  * A FAIRE DANS LA CLASSE :
+ * faire en sorte qu'elle se deplace
+ * plusieurs phases
 */
 
 export default class Boss extends Phaser.Physics.Arcade.Sprite {
@@ -25,11 +27,8 @@ export default class Boss extends Phaser.Physics.Arcade.Sprite {
 
     updateBoss() {
 
-
     }
 
-
-    
 
     highKick() {
 

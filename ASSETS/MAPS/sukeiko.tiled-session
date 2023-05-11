@@ -3,30 +3,53 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "niveau4_placeholder.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
         "#tileset": {
             "scaleInDock": 1
         },
         "niveau1_placeholder.tmx": {
-            "scale": 1,
+            "scale": 0.25,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 695.5,
-                "y": 1047.5
+                "x": 2246,
+                "y": 734
             }
         },
         "niveau1_placeholder.tmx#tileset": {
+            "scaleInDock": 1
+        },
+        "niveau2_placeholder.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 2822,
+                "y": 1150
+            }
+        },
+        "niveau2_placeholder.tmx#tileset": {
+            "scaleInDock": 1
+        },
+        "niveau4_placeholder.tmx": {
+            "scale": 0.0625,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 4200,
+                "y": 712
+            }
+        },
+        "niveau4_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "tuto_placeholder.tmx": {
             "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 479,
-                "y": 183
+                "x": 475,
+                "y": 487
             }
         },
         "tuto_placeholder.tmx#tileset": {
@@ -41,10 +64,18 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 140,
     "openFiles": [
+        "tuto_placeholder.tmx",
+        "niveau1_placeholder.tmx",
+        "niveau2_placeholder.tmx",
+        "niveau4_placeholder.tmx"
     ],
     "project": "sukeiko.tiled-project",
     "property.type": "bool",
     "recentFiles": [
+        "tuto_placeholder.tmx",
+        "niveau1_placeholder.tmx",
+        "niveau2_placeholder.tmx",
+        "niveau4_placeholder.tmx"
     ],
     "tileset.embedInMap": true
 }

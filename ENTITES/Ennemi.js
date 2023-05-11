@@ -23,14 +23,9 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-
     updateEnnemi() {
 
-
     }
-
-
-    
 
     highKick() {
 
@@ -45,7 +40,7 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
     }
 
     gettingHit() {
-        
+
     }
 
 

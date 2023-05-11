@@ -23,11 +23,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         this.isDodging = false;
         this.sautMural = true;
         this.toucheBloquee = false;
-        /*
-        this.jump();
-        this.dodge();
-        this.highKick();
-        this.baseballBat();*/
     }
 
 
@@ -53,23 +48,30 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         
 
 
-        // si saut (espace, gamepad A)
-        if (this.clavier.space.isDown) {
+        // si saut
+        if (this.clavier.up.isDown) {
             this.jump();
         }
 
-        // si dodge (E, gamepad B)
-        while (Phaser.Input.Keyboard.JustDown(Phaser.Input.Keyboard.KeyCodes.E)) {
+        //#TODO: regler ici les touches qui marchent pas
+        // si dodge (E)
+        if (Phaser.Input.Keyboard.JustDown(Phaser.Input.Keyboard.KeyCodes.E)) {
+            console.log("dodge");
             this.dodge();
         }
 
-        // si kick (A, gamepad X)
+        // si kick (A)
         if (Phaser.Input.Keyboard.JustDown(Phaser.Input.Keyboard.KeyCodes.A)) {
             this.highKick();
         }
 
-        // si baseball bat (Z, gamepad Y)
+        // si baseball bat (Z)
         if (Phaser.Input.Keyboard.JustDown(Phaser.Input.Keyboard.KeyCodes.Z)) {
+            this.baseballBat();
+        }
+
+        // si lancer objet (R)
+        if (Phaser.Input.Keyboard.JustDown(Phaser.Input.Keyboard.KeyCodes.R)) {
             this.baseballBat();
         }
 
@@ -134,31 +136,35 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     dodge() {
         if (!this.isDodging) {
             this.isDodging = true;
+            console.log("dodge");
 
             this.time.delayedCall(200, function() {
                 this.isDodging = false
             })
-
-
         }
-
     }
+
 
     highKick() {
+        console.log("kick");
 
     }
+
 
     baseballBat() {
-
+        console.log("bat");
     }
+
+
+    throw() {
+        console.log("throw");
+    }
+
 
     gettingHit() {
         if (!isDodging) {
             // fin + mort
         }
-
-        
-
     }
 
 
