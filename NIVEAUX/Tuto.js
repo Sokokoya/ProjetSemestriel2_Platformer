@@ -16,6 +16,11 @@ export default class Tuto extends Phaser.Scene {
         super({key : "Tuto"});
     }
 
+    init(data) {
+        this.posX = data.x;
+        this.posY = data.y;
+    }
+
 
 
     // -----------------------------------------------------------------------------------------
@@ -24,9 +29,10 @@ export default class Tuto extends Phaser.Scene {
 
     preload() {
 
-        // Chargement des sprites de la protagoniste
-        //this.load.spritesheet('keiko_idle', 'ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
+        // Chargement des sprites ennemis
+        this.load.spritesheet('ennemi1', '../ASSETS/ennemi1.png', {frameWidth: 32, frameHeight: 64});
 
+        // Chargement de la map
         this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
         this.load.tilemapTiledJSON('map_tuto', '../ASSETS/MAPS/tuto_placeholder.json');
 
@@ -40,6 +46,8 @@ export default class Tuto extends Phaser.Scene {
     // -----------------------------------------------------------------------------------------
 
     create() {
+
+        window.dataPlayer.tutoDone = true;
 
         // ----- AFFICHAGE DE LA SCENE -----
 
@@ -76,6 +84,11 @@ export default class Tuto extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
 
+        // Ajout des hitbox nécéssaires
+        this.hitbox_sortie = this.physics.add.sprite(1376, 416, 'hitbox');
+        this.physics.add.collider(this.hitbox_sortie, collisions);
+
+        
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
@@ -84,6 +97,13 @@ export default class Tuto extends Phaser.Scene {
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
         this.physics.add.collider(this.player, collisions);
+
+        this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+            this.scene.start("Telephone", {
+                x: 48,
+                y: 448
+            });
+        }, null, this);
 
 
         // ----- AFFICHAGE DES ENNEMIES -----
@@ -94,8 +114,8 @@ export default class Tuto extends Phaser.Scene {
 
         // ----- CAMERA -----
         // Redimensions du jeu selon le fichier Tiled
-        this.physics.world.setBounds(0, 0, 960, 640);
-        this.cameras.main.setBounds(0, 0, 960, 640);
+        this.physics.world.setBounds(0, 0, 1600, 640);
+        this.cameras.main.setBounds(0, 0, 1600, 640);
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);

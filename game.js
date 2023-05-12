@@ -10,6 +10,9 @@ import EcranTitre from "/NIVEAUX/EcranTitre.js";
 import Tuto from "/NIVEAUX/Tuto.js";
 import Shizuoka from "/NIVEAUX/Shizuoka.js";
 import Chantier from "/NIVEAUX/Chantier.js";
+import Batiment from "/NIVEAUX/Batiment.js";
+import Hamamatsu from "/NIVEAUX/Hamamatsu.js";
+import Telephone from "/NIVEAUX/Telephone.js";
 
 
 // Configuration initiale
@@ -26,7 +29,7 @@ var config = {
     },
 
     // Ajout des differentes scenes dans le jeu
-    scene: [EcranTitre, Tuto, Shizuoka, Chantier],
+    scene: [EcranTitre, Tuto, Shizuoka, Chantier, Batiment, Hamamatsu, Telephone],
 
     // Activation de la possibilité de jouer à la manette
     input: {gamepad: true}
@@ -36,4 +39,4 @@ var config = {
 
 // Début du jeu, lancé sur la scène EcranTitre
 var game = new Phaser.Game(config);
-game.scene.start("Chantier"); 
+game.scene.start("EcranTitre"); 

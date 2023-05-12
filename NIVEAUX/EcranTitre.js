@@ -26,7 +26,7 @@ export default class EcranTitre extends Phaser.Scene {
     preload() {
 
         // Chargement de l'image du menu
-        //this.load.image('image_menu', 'assets/image_menu.png');
+        this.load.image('image_menu', '../ASSETS/ecran_menu.png');
 
         
     }
@@ -43,7 +43,7 @@ export default class EcranTitre extends Phaser.Scene {
         this.clavier = this.input.keyboard.createCursorKeys();
 
         // Ajout de l'image du menu à l'écran
-        this.add.image(512, 288, "image_menu");
+        this.add.image(448, 224, "image_menu");
 
     }
 
@@ -58,9 +58,9 @@ export default class EcranTitre extends Phaser.Scene {
         // Changement vers la premiere scene dès que le joueur appuie sur espace
         if (Phaser.Input.Keyboard.JustDown(this.clavier.space)) {
             
-            this.scene.start("Tuto_01", {
-                x: 448,
-                y: 432
+            this.scene.start("Telephone", {
+                x: 48,
+                y: 448
             });
         }
     }

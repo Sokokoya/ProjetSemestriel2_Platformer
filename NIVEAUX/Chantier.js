@@ -16,6 +16,11 @@ export default class Chantier extends Phaser.Scene {
         super({key : "Chantier"});
     }
 
+    init(data) {
+        this.posX = data.x;
+        this.posY = data.y;
+    }
+
 
 
     // -----------------------------------------------------------------------------------------
@@ -40,6 +45,8 @@ export default class Chantier extends Phaser.Scene {
     // -----------------------------------------------------------------------------------------
 
     create() {
+
+        window.dataPlayer.chantierDone = true;
 
         // ----- AFFICHAGE DE LA SCENE -----
 
@@ -75,6 +82,10 @@ export default class Chantier extends Phaser.Scene {
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
 
+        // Ajout des hitbox nécéssaires
+        this.hitbox_sortie = this.physics.add.sprite(4608, 1040, 'hitbox');
+        this.physics.add.collider(this.hitbox_sortie, collisions);
+
 
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
@@ -84,6 +95,13 @@ export default class Chantier extends Phaser.Scene {
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
         this.physics.add.collider(this.player, collisions);
+
+        this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+            this.scene.start("Telephone", {
+                x: 48,
+                y: 448
+            });
+        }, null, this);
 
 
         // ----- AFFICHAGE DES ENNEMIES -----

@@ -1,8 +1,8 @@
 /**
- * Shizuoka.js --- Solenn Cattin 
+ * Batiment.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe Shizuoka, premier niveau du jeu
+ * Fichier comportant la classe Batiment, troisième niveau du jeu
  * 
  * 
  * A FAIRE DANS LA SCENE :
@@ -10,10 +10,10 @@
 
 import Player from '../ENTITES/Player.js';
 
-export default class Shizuoka extends Phaser.Scene {
+export default class Batiment extends Phaser.Scene {
 
     constructor() {
-        super({key : "Shizuoka"});
+        super({key : "Batiment"});
     }
 
     init(data) {
@@ -29,10 +29,11 @@ export default class Shizuoka extends Phaser.Scene {
 
     preload() {
 
-        
+        // Chargement des sprites de la protagoniste
+        this.load.spritesheet('keiko_idle', '../ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
 
         this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_niveau1', '../ASSETS/MAPS/niveau1_placeholder.json');
+        this.load.tilemapTiledJSON('map_niveau3', '../ASSETS/MAPS/niveau3_placeholder.json');
 
         
     }
@@ -45,12 +46,12 @@ export default class Shizuoka extends Phaser.Scene {
 
     create() {
 
-        window.dataPlayer.shizuokaDone = true;
+        window.dataPlayer.batimentDone = true;
 
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques
-        const gameMap = this.add.tilemap('map_niveau1');
+        const gameMap = this.add.tilemap('map_niveau3');
 
         const gameTileset = gameMap.addTilesetImage(
             "tileset",
@@ -59,6 +60,11 @@ export default class Shizuoka extends Phaser.Scene {
 
         const fond = gameMap.createLayer(
             "fond",
+            gameTileset
+        );
+
+        const objets = gameMap.createLayer(
+            "objets",
             gameTileset
         );
 
@@ -82,7 +88,7 @@ export default class Shizuoka extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
         // Ajout des hitbox nécéssaires
-        this.hitbox_sortie = this.physics.add.sprite(1472, 912, 'hitbox');
+        this.hitbox_sortie = this.physics.add.sprite(960, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
 
@@ -111,8 +117,8 @@ export default class Shizuoka extends Phaser.Scene {
 
         // ----- CAMERA -----
         // Redimensions du jeu selon le fichier Tiled
-        this.physics.world.setBounds(0, 0, 4480, 1280);
-        this.cameras.main.setBounds(0, 0, 4480, 1280);
+        this.physics.world.setBounds(0, 0, 4480, 1440);
+        this.cameras.main.setBounds(0, 0, 4480, 1440);
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
