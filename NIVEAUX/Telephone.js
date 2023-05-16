@@ -92,6 +92,9 @@ export default class Telephone extends Phaser.Scene {
         this.hitbox_sortie = this.physics.add.sprite(800, 416, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
+        this.hitbox_telephone = this.physics.add.sprite(480,400, 'hitbox')
+        this.physics.add.collider(this.hitbox_telephone, collisions);
+
 
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
@@ -101,6 +104,10 @@ export default class Telephone extends Phaser.Scene {
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
         this.physics.add.collider(this.player, collisions);
+
+        this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+            console.log("appel telephone");
+        }, null, this);
 
         if (!window.dataPlayer.tutoDone) {
 
@@ -164,6 +171,7 @@ export default class Telephone extends Phaser.Scene {
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
+        this.cameras.main.zoom = 1.4;
 
 
     }

@@ -82,9 +82,11 @@ export default class Chantier extends Phaser.Scene {
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
 
-        // Ajout des hitbox nécéssaires
-        this.hitbox_sortie = this.physics.add.sprite(4608, 1040, 'hitbox');
+        // Ajout des hitbox nécéssaires ainsi que de leurs collisions avec les plateformes
+        this.hitbox_sortie = this.physics.add.sprite(1984, 1040, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
+
+        
 
 
 
@@ -104,6 +106,9 @@ export default class Chantier extends Phaser.Scene {
         }, null, this);
 
 
+        
+
+
         // ----- AFFICHAGE DES ENNEMIES -----
 
 
@@ -117,6 +122,7 @@ export default class Chantier extends Phaser.Scene {
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
+        this.cameras.main.zoom = 1.4;
 
 
     }

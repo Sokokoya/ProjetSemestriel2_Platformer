@@ -6,6 +6,7 @@
  * 
  * 
  * A FAIRE DANS LA SCENE :
+ * - Reussir a tp entre chaque asenseurs
 */
 
 import Player from '../ENTITES/Player.js';
@@ -87,9 +88,22 @@ export default class Batiment extends Phaser.Scene {
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
 
-        // Ajout des hitbox nécéssaires
-        this.hitbox_sortie = this.physics.add.sprite(960, 1200, 'hitbox');
+        // Ajout des hitbox nécéssaires ainsi que leurs collisions
+        this.hitbox_sortie = this.physics.add.sprite(1056, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
+
+        this.hitbox_ascenseur1 = this.physics.add.sprite(992, 1200, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur1, collisions);
+        this.hitbox_ascenseur2 = this.physics.add.sprite(480, 464, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur2, collisions);
+        this.hitbox_ascenseur3 = this.physics.add.sprite(992, 848, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur3, collisions);
+        this.hitbox_ascenseur4 = this.physics.add.sprite(1824, 720, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur4, collisions);
+        this.hitbox_ascenseur5 = this.physics.add.sprite(2496, 1200, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur5, collisions);
+        this.hitbox_ascenseur6 = this.physics.add.sprite(3488, 1200, 'hitbox');
+        this.physics.add.collider(this.hitbox_ascenseur6, collisions);
 
 
 
@@ -108,6 +122,31 @@ export default class Batiment extends Phaser.Scene {
             });
         }, null, this);
 
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur1, function() {
+            //#TODO: tp le personnage au prochain ascenseur s'il appuie sur "haut"
+            console.log("overlap ascenseur");
+        }, null, this);
+
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur2, function() {
+            //#TODO: tp le personnage au prochain ascenseur
+        }, null, this);
+
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur3, function() {
+            //#TODO: tp le personnage au prochain ascenseur
+        }, null, this);
+
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur4, function() {
+            //#TODO: tp le personnage au prochain ascenseur
+        }, null, this);
+
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur5, function() {
+            //#TODO: tp le personnage au prochain ascenseur
+        }, null, this);
+
+        this.physics.add.overlap(this.player, this.hitbox_ascenseur6, function() {
+            //#TODO: tp le personnage au prochain ascenseur
+        }, null, this);
+
 
         // ----- AFFICHAGE DES ENNEMIES -----
 
@@ -122,6 +161,7 @@ export default class Batiment extends Phaser.Scene {
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
+        this.cameras.main.zoom = 1.4;
 
 
     }

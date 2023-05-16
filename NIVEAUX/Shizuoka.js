@@ -116,6 +116,7 @@ export default class Shizuoka extends Phaser.Scene {
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);
+        this.cameras.main.zoom = 1.4;
 
 
     }

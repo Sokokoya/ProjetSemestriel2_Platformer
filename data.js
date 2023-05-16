@@ -7,5 +7,9 @@ var dataPlayer = {
     shizuokaDone : false,
     chantierDone : false,
     batimentDone : false,
-    hamamatsuDone : false
+    hamamatsuDone : false,
+
+    isDodging : false,
+    sautMural : true,
+    toucheBloquee : false
 }
