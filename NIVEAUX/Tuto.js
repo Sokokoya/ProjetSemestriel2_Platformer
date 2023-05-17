@@ -1,8 +1,8 @@
 /**
- * Tuto_01.js --- Solenn Cattin 
+ * Tuto.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe Tuto_01
+ * Fichier comportant la scène Tuto
  * 
  * 
  * A FAIRE DANS LA SCENE :
@@ -49,6 +49,7 @@ export default class Tuto extends Phaser.Scene {
 
         window.dataPlayer.tutoDone = true;
 
+
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques
@@ -77,8 +78,6 @@ export default class Tuto extends Phaser.Scene {
         // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
         this.clavier = this.input.keyboard.createCursorKeys();
 
-        //touches personnalisées
-
 
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
@@ -89,6 +88,7 @@ export default class Tuto extends Phaser.Scene {
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
         
+
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
@@ -106,10 +106,16 @@ export default class Tuto extends Phaser.Scene {
         }, null, this);
 
 
+
+
         // ----- AFFICHAGE DES ENNEMIES -----
 
 
+
+
         // ----- AFFICHAGE DE L'UI -----
+
+
 
 
         // ----- CAMERA -----
@@ -126,6 +132,7 @@ export default class Tuto extends Phaser.Scene {
 
 
 
+    
     // -----------------------------------------------------------------------------------------
     // ----------------------------------- FONCTION UPDATE -------------------------------------
     // -----------------------------------------------------------------------------------------
