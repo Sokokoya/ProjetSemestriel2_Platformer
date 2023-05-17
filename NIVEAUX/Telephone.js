@@ -142,7 +142,7 @@ export default class Telephone extends Phaser.Scene {
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
                 this.scene.start("Batiment", {
                     x: 48,
-                    y: 1088
+                    y: 1216
                 });
             }, null, this);
 

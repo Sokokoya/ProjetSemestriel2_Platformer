@@ -89,20 +89,20 @@ export default class Batiment extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
         // Ajout des hitbox nécéssaires ainsi que leurs collisions
-        this.hitbox_sortie = this.physics.add.sprite(1056, 1200, 'hitbox');
+        this.hitbox_sortie = this.physics.add.sprite(4416, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
         this.hitbox_ascenseur1 = this.physics.add.sprite(992, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur1, collisions);
-        this.hitbox_ascenseur2 = this.physics.add.sprite(480, 464, 'hitbox');
+        this.hitbox_ascenseur2 = this.physics.add.sprite(512, 464, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur2, collisions);
-        this.hitbox_ascenseur3 = this.physics.add.sprite(992, 848, 'hitbox');
+        this.hitbox_ascenseur3 = this.physics.add.sprite(1024, 848, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur3, collisions);
-        this.hitbox_ascenseur4 = this.physics.add.sprite(1824, 720, 'hitbox');
+        this.hitbox_ascenseur4 = this.physics.add.sprite(1856, 720, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur4, collisions);
-        this.hitbox_ascenseur5 = this.physics.add.sprite(2496, 1200, 'hitbox');
+        this.hitbox_ascenseur5 = this.physics.add.sprite(2528, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur5, collisions);
-        this.hitbox_ascenseur6 = this.physics.add.sprite(3488, 1200, 'hitbox');
+        this.hitbox_ascenseur6 = this.physics.add.sprite(3520, 1200, 'hitbox');
         this.physics.add.collider(this.hitbox_ascenseur6, collisions);
 
 
@@ -123,28 +123,113 @@ export default class Batiment extends Phaser.Scene {
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur1, function() {
-            //#TODO: tp le personnage au prochain ascenseur s'il appuie sur "haut"
-            console.log("overlap ascenseur");
+            
+            if (this.clavier.up.isDown) {
+                console.log("toAscenseur2" + window.ascenseur.toAscenseur2);
+
+                window.ascenseur.toAscenseur1 = false;
+                window.ascenseur.toAscenseur2 = true;
+                window.ascenseur.toAscenseur3 = false;
+                window.ascenseur.toAscenseur4 = false;
+                window.ascenseur.toAscenseur5 = false;
+                window.ascenseur.toAscenseur6 = false;
+                console.log("toAscenseur2" + window.ascenseur.toAscenseur2);
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur2, function() {
-            //#TODO: tp le personnage au prochain ascenseur
+            if (this.clavier.up.isDown) {
+                console.log("overlap ascenseur");
+
+                window.ascenseur.toAscenseur1 = true;
+                window.ascenseur.toAscenseur2 = false;
+                window.ascenseur.toAscenseur3 = false;
+                window.ascenseur.toAscenseur4 = false;
+                window.ascenseur.toAscenseur5 = false;
+                window.ascenseur.toAscenseur6 = false;
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur3, function() {
-            //#TODO: tp le personnage au prochain ascenseur
+            if (this.clavier.up.isDown) {
+                console.log("overlap ascenseur");
+
+                window.ascenseur.toAscenseur1 = false;
+                window.ascenseur.toAscenseur2 = false;
+                window.ascenseur.toAscenseur3 = false;
+                window.ascenseur.toAscenseur4 = true;
+                window.ascenseur.toAscenseur5 = false;
+                window.ascenseur.toAscenseur6 = false;
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur4, function() {
-            //#TODO: tp le personnage au prochain ascenseur
+            if (this.clavier.up.isDown) {
+                console.log("overlap ascenseur");
+
+                window.ascenseur.toAscenseur1 = false;
+                window.ascenseur.toAscenseur2 = false;
+                window.ascenseur.toAscenseur3 = true;
+                window.ascenseur.toAscenseur4 = false;
+                window.ascenseur.toAscenseur5 = false;
+                window.ascenseur.toAscenseur6 = false;
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur5, function() {
-            //#TODO: tp le personnage au prochain ascenseur
+            if (this.clavier.up.isDown) {
+                console.log("overlap ascenseur");
+
+                window.ascenseur.toAscenseur1 = false;
+                window.ascenseur.toAscenseur2 = false;
+                window.ascenseur.toAscenseur3 = false;
+                window.ascenseur.toAscenseur4 = false;
+                window.ascenseur.toAscenseur5 = false;
+                window.ascenseur.toAscenseur6 = true;
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
         this.physics.add.overlap(this.player, this.hitbox_ascenseur6, function() {
-            //#TODO: tp le personnage au prochain ascenseur
+            if (this.clavier.up.isDown) {
+                console.log("overlap ascenseur");
+
+                window.ascenseur.toAscenseur1 = false;
+                window.ascenseur.toAscenseur2 = false;
+                window.ascenseur.toAscenseur3 = false;
+                window.ascenseur.toAscenseur4 = false;
+                window.ascenseur.toAscenseur5 = true;
+                window.ascenseur.toAscenseur6 = false;
+
+                this.scene.start("Ascenseur", {
+                    x: 80,
+                    y: 32
+                });
+            }
         }, null, this);
 
 

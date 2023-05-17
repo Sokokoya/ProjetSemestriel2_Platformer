@@ -83,7 +83,7 @@ export default class Chantier extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
         // Ajout des hitbox nécéssaires ainsi que de leurs collisions avec les plateformes
-        this.hitbox_sortie = this.physics.add.sprite(1984, 1040, 'hitbox');
+        this.hitbox_sortie = this.physics.add.sprite(6944, 1040, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
         

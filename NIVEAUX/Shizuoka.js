@@ -82,7 +82,7 @@ export default class Shizuoka extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
         // Ajout des hitbox nécéssaires
-        this.hitbox_sortie = this.physics.add.sprite(1472, 912, 'hitbox');
+        this.hitbox_sortie = this.physics.add.sprite(4416, 1040, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
 
 

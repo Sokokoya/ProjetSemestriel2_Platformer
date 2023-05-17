@@ -13,6 +13,7 @@ import Chantier from "/NIVEAUX/Chantier.js";
 import Batiment from "/NIVEAUX/Batiment.js";
 import Hamamatsu from "/NIVEAUX/Hamamatsu.js";
 import Telephone from "/NIVEAUX/Telephone.js";
+import Ascenseur from "/NIVEAUX/Ascenseur.js";
 
 
 // Configuration initiale
@@ -23,13 +24,13 @@ var config = {
         default: 'arcade',
         arcade: {
             //#TODO: changer la gravité ici pour rendre au mieux possible
-            gravity: { y: 700 },
+            gravity: { y: 1000 },
             debug: true
         }
     },
 
     // Ajout des differentes scenes dans le jeu
-    scene: [EcranTitre, Tuto, Shizuoka, Chantier, Batiment, Hamamatsu, Telephone],
+    scene: [EcranTitre, Tuto, Shizuoka, Chantier, Batiment, Hamamatsu, Telephone, Ascenseur],
 
     // Activation de la possibilité de jouer à la manette
     input: {gamepad: true}

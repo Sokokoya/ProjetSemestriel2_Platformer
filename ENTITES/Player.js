@@ -90,6 +90,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
 
+        window.dataPlayer.x = this.x;
+        window.dataPlayer.y = this.y;
+
+
     }
 
 

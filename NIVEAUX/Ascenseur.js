@@ -1,8 +1,8 @@
 /**
- * Hamamatsu.js --- Solenn Cattin 
+ * Ascenseur.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe Hamamatsu, quatrième et dernier niveau du jeu
+ * Fichier comportant la classe Ascenseur, utile pour le niveau 3
  * 
  * 
  * A FAIRE DANS LA SCENE :
@@ -10,10 +10,10 @@
 
 import Player from '../ENTITES/Player.js';
 
-export default class Hamamatsu extends Phaser.Scene {
+export default class Ascenseur extends Phaser.Scene {
 
     constructor() {
-        super({key : "Hamamatsu"});
+        super({key : "Ascenseur"});
     }
 
     init(data) {
@@ -32,8 +32,11 @@ export default class Hamamatsu extends Phaser.Scene {
         // Chargement des sprites de la protagoniste
         this.load.spritesheet('keiko_idle', '../ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
 
+        // Chargement des autres sprites
+        this.load.spritesheet('hitbox', '../ASSETS/hitbox.png', {frameWidth: 64, frameHeight: 96});
+
         this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_niveau4', '../ASSETS/MAPS/niveau4_placeholder.json');
+        this.load.tilemapTiledJSON('map_ascenseur', '../ASSETS/MAPS/ascenseur_placeholder.json');
 
         
     }
@@ -46,12 +49,10 @@ export default class Hamamatsu extends Phaser.Scene {
 
     create() {
 
-        window.dataPlayer.hamamatsuDone = true;
-
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques
-        const gameMap = this.add.tilemap('map_niveau4');
+        const gameMap = this.add.tilemap('map_ascenseur');
 
         const gameTileset = gameMap.addTilesetImage(
             "tileset",
@@ -83,37 +84,87 @@ export default class Hamamatsu extends Phaser.Scene {
         collisions.setCollisionByExclusion(-1, true);
 
         // Ajout des hitbox nécéssaires
-        this.hitbox_sortie = this.physics.add.sprite(7016, 1040, 'hitbox');
+        this.hitbox_sortie = this.physics.add.sprite(64, 80, 'hitbox');
         this.physics.add.collider(this.hitbox_sortie, collisions);
+
 
 
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
         this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
+        this.player.visible = false;
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
         this.physics.add.collider(this.player, collisions);
 
-        this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
-            this.scene.start("Telephone", {
-                x: 48,
-                y: 448
-            });
-        }, null, this);
+
+        if (window.ascenseur.toAscenseur1) {
+
+            //#TODO: rajouter demander si le joueur veut faire le tuto ou pas
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 992,
+                    y: 1200
+                });
+            }, null, this);
 
 
-        // ----- AFFICHAGE DES ENNEMIES -----
+        } else if (window.ascenseur.toAscenseur2) {
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 512,
+                    y: 464
+                });
+            }, null, this);
 
 
-        // ----- AFFICHAGE DE L'UI -----
+        } else if (window.ascenseur.toAscenseur3) {
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 1024,
+                    y: 848
+                });
+            }, null, this);
+
+
+        } else if (window.ascenseur.toAscenseur4) {
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 1856,
+                    y: 720
+                });
+            }, null, this);
+
+
+        } else if (window.ascenseur.toAscenseur5) {
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 2528,
+                    y: 1200
+                });
+            }, null, this);
+
+
+        } else if (window.ascenseur.toAscenseur6) {
+            this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
+                this.scene.start("Batiment", {
+                    x: 3520,
+                    y: 1200
+                });
+            }, null, this);
+        }
+        
+
+
+
 
 
         // ----- CAMERA -----
         // Redimensions du jeu selon le fichier Tiled
-        this.physics.world.setBounds(0, 0, 7680, 1280);
-        this.cameras.main.setBounds(0, 0, 7680, 1280);
+        this.physics.world.setBounds(0, 0, 480, 480);
+        this.cameras.main.setBounds(0, 0, 480, 480);
         
         // Tracking de la caméra sur le joueur
         this.cameras.main.startFollow(this.player);

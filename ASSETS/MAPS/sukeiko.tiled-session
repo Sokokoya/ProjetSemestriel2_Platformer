@@ -7,16 +7,28 @@
     "expandedProjectPaths": [
         "."
     ],
+    "file.lastUsedOpenFilter": "Tous les Fichiers (*)",
     "fileStates": {
         "#tileset": {
+            "scaleInDock": 1
+        },
+        "ascenceur_placeholder.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 274.5,
+                "y": 217.5
+            }
+        },
+        "ascenceur_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau1_placeholder.tmx": {
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1466,
-                "y": 728.6666666666665
+                "x": 4211.333333333333,
+                "y": 904.6666666666666
             }
         },
         "niveau1_placeholder.tmx#tileset": {
@@ -26,30 +38,30 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 283.33333333333337,
-                "y": 958
+                "x": 6687.333333333333,
+                "y": 1020.6666666666666
             }
         },
         "niveau2_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau3_placeholder.tmx": {
-            "scale": 0.5,
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 609,
-                "y": 1069
+                "x": 3713.636363636364,
+                "y": 962.121212121212
             }
         },
         "niveau3_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau4_placeholder.tmx": {
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 411.33333333333337,
-                "y": 814
+                "x": 6080.30303030303,
+                "y": 1016.6666666666666
             }
         },
         "niveau4_placeholder.tmx#tileset": {
@@ -70,8 +82,8 @@
             "scale": 0.75,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 1140.6666666666665,
-                "y": 454
+                "x": 799.3333333333333,
+                "y": 319.33333333333337
             }
         },
         "tuto_placeholder.tmx#tileset": {
@@ -81,10 +93,10 @@
     },
     "last.exportedFilePath": "C:/Users/game/Documents/GitHub/PS2/ASSETS/MAPS",
     "last.imagePath": "C:/Users/game/Documents/GitHub/PS2/ASSETS/MAPS",
-    "map.height": 20,
+    "map.height": 5,
     "map.lastUsedExportFilter": "Fichiers de carte JSON (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
-    "map.width": 30,
+    "map.width": 5,
     "openFiles": [
         "tuto_placeholder.tmx",
         "niveau1_placeholder.tmx",
