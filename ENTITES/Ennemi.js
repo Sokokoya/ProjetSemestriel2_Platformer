@@ -23,6 +23,8 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
 
+        this.hasBeenHit = false;
+
     }
 
 
@@ -69,7 +71,10 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
 
     }
 
-    gettingHit() {
+    gettingHit(player) {
+        console.log("hit !");
+
+        this.hasBeenHit = true;
 
     }
 

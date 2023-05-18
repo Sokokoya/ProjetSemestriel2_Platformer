@@ -48,6 +48,11 @@ export default class Hamamatsu extends Phaser.Scene {
 
         window.dataPlayer.hamamatsuDone = true;
 
+        // Mise en place du checkpoint au début du niveau
+        window.dataPlayer.checkpoint = "Hamamatsu";
+        window.dataPlayer.checkpointX = this.posX;
+        window.dataPlayer.checkpointY = this.posY;
+
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques

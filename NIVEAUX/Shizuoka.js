@@ -47,6 +47,11 @@ export default class Shizuoka extends Phaser.Scene {
 
         window.dataPlayer.shizuokaDone = true;
 
+        // Mise en place du checkpoint au début du niveau
+        window.dataPlayer.checkpoint = "Shizuoka";
+        window.dataPlayer.checkpointX = this.posX;
+        window.dataPlayer.checkpointY = this.posY;
+
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques

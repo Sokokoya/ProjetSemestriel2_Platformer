@@ -9,6 +9,7 @@
 */
 
 import Player from '../ENTITES/Player.js';
+import Ennemi from '../ENTITES/Ennemi.js';
 
 export default class Tuto extends Phaser.Scene {
 
@@ -48,6 +49,11 @@ export default class Tuto extends Phaser.Scene {
     create() {
 
         window.dataPlayer.tutoDone = true;
+
+        // Mise en place du checkpoint au début du niveau
+        window.dataPlayer.checkpoint = "Tuto";
+        window.dataPlayer.checkpointX = this.posX;
+        window.dataPlayer.checkpointY = this.posY;
 
 
         // ----- AFFICHAGE DE LA SCENE -----
@@ -93,6 +99,8 @@ export default class Tuto extends Phaser.Scene {
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
         this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
+        this.hitbox_player = this.physics.add.sprite(window.dataPlayer.x, window.dataPlayer.y, 'hitbox_player');
+        this.hitbox_player.body.setGravity(0);
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
@@ -111,6 +119,24 @@ export default class Tuto extends Phaser.Scene {
         // ----- AFFICHAGE DES ENNEMIES -----
 
 
+        this.enemies = this.physics.add.group();
+
+        let posEnnemis = [
+            {x: 480, y: 288},
+            {x: 672, y: 416},
+            {x: 928, y: 384}
+        ];
+
+        for (let i=0; i<3; i++) {
+            let x = posEnnemis[i].x;
+            let y = posEnnemis[i].y;
+
+            let ennemi = new Ennemi(this, x, y, "ennemi1", "esquive");
+            this.enemies.add(ennemi);
+            ennemi.body.setImmovable(true);
+            
+        }
+        this.physics.add.collider (this.enemies, collisions);
 
 
         // ----- AFFICHAGE DE L'UI -----
@@ -140,6 +166,18 @@ export default class Tuto extends Phaser.Scene {
     update() {
 
         this.player.updatePlayer();
+
+        this.enemies.children.each((ennemi) => {
+            ennemi.updateEnnemi();
+        });
+
+        this.enemies.getChildren().forEach(ennemi => {
+            if (ennemi.hasBeenHit) {
+                console.log("hit !");
+            }
+        })
+
+        this.hitbox_player.setPosition(window.dataPlayer.x, window.dataPlayer.y);
     }
 
 

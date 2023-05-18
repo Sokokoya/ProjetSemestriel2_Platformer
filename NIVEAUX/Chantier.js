@@ -48,6 +48,11 @@ export default class Chantier extends Phaser.Scene {
 
         window.dataPlayer.chantierDone = true;
 
+        // Mise en place du checkpoint au début du niveau
+        window.dataPlayer.checkpoint = "Chantier";
+        window.dataPlayer.checkpointX = this.posX;
+        window.dataPlayer.checkpointY = this.posY;
+
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques

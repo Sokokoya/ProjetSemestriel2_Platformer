@@ -49,6 +49,12 @@ export default class Batiment extends Phaser.Scene {
 
         window.dataPlayer.batimentDone = true;
 
+        // Mise en place du checkpoint au début du niveau
+        window.dataPlayer.checkpoint = "Batiment";
+        window.dataPlayer.checkpointX = this.posX;
+        window.dataPlayer.checkpointY = this.posY;
+        
+
         // ----- AFFICHAGE DE LA SCENE -----
 
         // Chargement des calques

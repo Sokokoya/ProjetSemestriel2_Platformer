@@ -64,7 +64,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.jump();
         }
 
-        //#TODO: regler ici les touches qui marchent pas
         // si dodge (E)
         if (Phaser.Input.Keyboard.JustDown(keyE)) {
             console.log("dodge");
@@ -158,14 +157,26 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-    highKick() {
+    highKick(enemi) {
         console.log("kick");
+
+        //const enemy = this.getClosestEnemy();
+
+        if (enemi) {
+            enemi.gettingHit(this); 
+        }
 
     }
 
 
     baseballBat() {
         console.log("bat");
+
+        const enemy = this.getClosestEnemy();
+
+        if (enemy) {
+            enemy.gettingHit(this);
+        }
     }
 
 
@@ -176,9 +187,31 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     gettingHit() {
         if (!isDodging) {
-            // fin + mort
+
+            this.scene.scene.start(window.dataPlayer.checkpoint, {
+                x: window.dataPlayer.checkpointX,
+                y: window.dataPlayer.checkPointY
+            });
         }
     }
+/*
+    getClosestEnemy() {
+        let closestEnemy = null;
+        let closestDistance = Infinity;
+
+        console.log(this.scene.enemies);
+      
+        for (const enemy of this.scene.enemies) {
+          const distance = Phaser.Math.Distance.Between(this.x, this.y, enemy.x, enemy.y);
+      
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestEnemy = enemy;
+          }
+        }
+      
+        return closestEnemy;
+    }*/
 
 
 }
