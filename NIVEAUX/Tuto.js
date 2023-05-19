@@ -119,6 +119,8 @@ export default class Tuto extends Phaser.Scene {
         // ----- AFFICHAGE DES ENNEMIES -----
 
         this.groupKicks = this.physics.add.group();
+        this.groupBats = this.physics.add.group();
+
         this.enemies = this.physics.add.group();
 
         let posEnnemis = [
@@ -142,6 +144,11 @@ export default class Tuto extends Phaser.Scene {
         this.physics.add.collider(this.groupKicks, this.enemies, (kick, ennemi) => {
             ennemi.gettingHit(this.player);
             kick.destroy();
+        }, null, this);
+
+        this.physics.add.collider(this.groupBats, this.enemies, (bat, ennemi) => {
+            ennemi.gettingHit(this.player);
+            bat.destroy();
         }, null, this);
 
 
@@ -197,6 +204,23 @@ export default class Tuto extends Phaser.Scene {
             kick.destroy();
         }, null, this);
 
+
+        this.groupKicks.getChildren().forEach(bat => {
+            this.enemies.getChildren().forEach(ennemi => {
+                this.physics.add.overlap(bat, ennemi, () => {
+                    ennemi.gettingHit(this.player);
+                    ennemi.destroy();
+                    bat.destroy();
+                }, null, this);
+            });
+        });
+
+        this.physics.add.overlap(this.groupBats, this.enemies, (bat, ennemi) => {
+            ennemi.gettingHit(this.player);
+            bat.destroy();
+        }, null, this);
+
+        
         this.hitbox_player.setPosition(window.dataPlayer.x, window.dataPlayer.y);
     }
 

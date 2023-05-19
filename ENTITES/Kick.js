@@ -27,11 +27,11 @@ export default class Kick extends Phaser.Physics.Arcade.Sprite {
 
         var coefDirX;
 
-        if (direction === 'left') { 
+        if (direction === 'gauche') { 
             coefDirX = -1;
         } 
 
-        else if (direction === 'right') { 
+        else if (direction === 'droite') { 
             coefDirX = 1;
         }
 

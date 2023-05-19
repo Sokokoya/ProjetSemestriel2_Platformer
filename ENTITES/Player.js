@@ -13,6 +13,7 @@
  * - mecaniques de saut, d'esquive, et de coups
 */
 import Kick from "./Kick.js";
+import Bat from "./Bat.js";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
 
@@ -160,6 +161,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     highKick(sprite) {
+        console.log("kick");
 
         if (new Date().getTime() - this.timeFromLastAttack < this.cooldown){
             return; 
@@ -172,14 +174,17 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-    baseballBat() {
+    baseballBat(sprite) {
         console.log("bat");
 
-        const enemy = this.getClosestEnemy();
+        if (new Date().getTime() - this.timeFromLastAttack < this.cooldown){
+            return; 
+        } 
 
-        if (enemy) {
-            enemy.gettingHit(this);
-        }
+        this.bat = new Bat(this.scene, this.x, this.y, sprite);
+        this.bat.hit(this.direction);
+
+        this.timeFromLastAttack = new Date().getTime();
     }
 
 
