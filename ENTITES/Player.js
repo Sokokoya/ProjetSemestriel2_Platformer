@@ -12,6 +12,7 @@
  * A FAIRE DANS LA CLASSE :
  * - mecaniques de saut, d'esquive, et de coups
 */
+import Kick from "./Kick.js";
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
 
@@ -23,10 +24,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
-        /*
-        this.isDodging = false;
-        this.sautMural = true;
-        this.toucheBloquee = false;*/
+
+        this.direction = "droite";
+
+        this.timeFromLastAttack = 0;
+        this.cooldown = 600;
         
     }
     
@@ -73,7 +75,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // si kick (A)
         if (Phaser.Input.Keyboard.JustDown(keyA)) {
             console.log("kick");
-            this.highKick();
+            this.highKick('hitbox');
         }
 
         // si baseball bat (Z)
@@ -157,15 +159,16 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
 
-    highKick(enemi) {
-        console.log("kick");
+    highKick(sprite) {
 
-        //const enemy = this.getClosestEnemy();
+        if (new Date().getTime() - this.timeFromLastAttack < this.cooldown){
+            return; 
+        } 
 
-        if (enemi) {
-            enemi.gettingHit(this); 
-        }
+        this.kick = new Kick(this.scene, this.x, this.y, sprite);
+        this.kick.hit(this.direction);
 
+        this.timeFromLastAttack = new Date().getTime();
     }
 
 
@@ -194,24 +197,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             });
         }
     }
-/*
-    getClosestEnemy() {
-        let closestEnemy = null;
-        let closestDistance = Infinity;
 
-        console.log(this.scene.enemies);
-      
-        for (const enemy of this.scene.enemies) {
-          const distance = Phaser.Math.Distance.Between(this.x, this.y, enemy.x, enemy.y);
-      
-          if (distance < closestDistance) {
-            closestDistance = distance;
-            closestEnemy = enemy;
-          }
-        }
-      
-        return closestEnemy;
-    }*/
+    hit(ennemi, attaque) {
+        attaque.destroy();
+
+        ennemi.destroy();
+    }
 
 
 }

@@ -11,11 +11,13 @@
 
 export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
 
-    constructor(scene, x, y, texture, type) {
+    constructor(scene, x, y, texture, type, enemies) {
         super(scene, x, y, texture);
 
         // trois types differents
         this.typeEnnemi = type;
+        this.scene = scene;
+        this.enemies = enemies;
 
         this.clavier = scene.input.keyboard.createCursorKeys();
 
@@ -73,9 +75,8 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
 
     gettingHit(player) {
         console.log("hit !");
-
         this.hasBeenHit = true;
-
+        this.enemies.remove(this);
     }
 
 

@@ -118,7 +118,7 @@ export default class Tuto extends Phaser.Scene {
 
         // ----- AFFICHAGE DES ENNEMIES -----
 
-
+        this.groupKicks = this.physics.add.group();
         this.enemies = this.physics.add.group();
 
         let posEnnemis = [
@@ -131,12 +131,18 @@ export default class Tuto extends Phaser.Scene {
             let x = posEnnemis[i].x;
             let y = posEnnemis[i].y;
 
-            let ennemi = new Ennemi(this, x, y, "ennemi1", "esquive");
+            let ennemi = new Ennemi(this, x, y, "ennemi1", "esquive", this.enemies);
             this.enemies.add(ennemi);
             ennemi.body.setImmovable(true);
             
         }
         this.physics.add.collider (this.enemies, collisions);
+
+
+        this.physics.add.collider(this.groupKicks, this.enemies, (kick, ennemi) => {
+            ennemi.gettingHit(this.player);
+            kick.destroy();
+        }, null, this);
 
 
         // ----- AFFICHAGE DE L'UI -----
@@ -167,15 +173,29 @@ export default class Tuto extends Phaser.Scene {
 
         this.player.updatePlayer();
 
-        this.enemies.children.each((ennemi) => {
+        this.enemies.getChildren().forEach(ennemi => {
+
             ennemi.updateEnnemi();
+
+            if (ennemi.hasBeenHit) {
+                ennemi.destroy();
+            }
         });
 
-        this.enemies.getChildren().forEach(ennemi => {
-            if (ennemi.hasBeenHit) {
-                console.log("hit !");
-            }
-        })
+        this.groupKicks.getChildren().forEach(kick => {
+            this.enemies.getChildren().forEach(ennemi => {
+                this.physics.add.overlap(kick, ennemi, () => {
+                    ennemi.gettingHit(this.player);
+                    ennemi.destroy();
+                    kick.destroy();
+                }, null, this);
+            });
+        });
+
+        this.physics.add.overlap(this.groupKicks, this.enemies, (kick, ennemi) => {
+            ennemi.gettingHit(this.player);
+            kick.destroy();
+        }, null, this);
 
         this.hitbox_player.setPosition(window.dataPlayer.x, window.dataPlayer.y);
     }
