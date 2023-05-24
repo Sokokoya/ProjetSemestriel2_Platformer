@@ -42,7 +42,7 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
         //si le type est "esquive", on peut dodge
 
     }
-
+    
 
     attaque() {
 
