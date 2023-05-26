@@ -16,30 +16,30 @@
             "scale": 1,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 274.5,
-                "y": 217.5
+                "x": 240.5,
+                "y": 240.5
             }
         },
         "ascenceur_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau1_placeholder.tmx": {
-            "scale": 0.125,
+            "scale": 0.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2236,
-                "y": 980
+                "x": 3909,
+                "y": 1037
             }
         },
         "niveau1_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau2_placeholder.tmx": {
-            "scale": 0.75,
+            "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6687.333333333333,
-                "y": 1020.6666666666666
+                "x": 2519.69696969697,
+                "y": 1022.7272727272727
             }
         },
         "niveau2_placeholder.tmx#tileset": {
@@ -49,8 +49,8 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3713.636363636364,
-                "y": 962.121212121212
+                "x": 1771.212121212121,
+                "y": 1253.0303030303032
             }
         },
         "niveau3_placeholder.tmx#tileset": {
@@ -60,8 +60,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 6913.636363636364,
-                "y": 998.4848484848487
+                "x": 1513.6363636363635,
+                "y": 934.8484848484848
             }
         },
         "niveau4_placeholder.tmx#tileset": {
@@ -82,8 +82,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 768.1818181818182,
-                "y": 519.6969696969696
+                "x": 801.5151515151515,
+                "y": 319.69696969696963
             }
         },
         "tuto_placeholder.tmx#tileset": {
