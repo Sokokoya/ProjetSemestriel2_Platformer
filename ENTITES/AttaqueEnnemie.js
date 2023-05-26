@@ -1,13 +1,13 @@
 /**
- * Kick.js --- Solenn Cattin 
+ * AttaqueEnnemie.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe Kick permettant de créer les coups de pieds du player
+ * Fichier comportant la classe AttaqueEnnemie permettant de créer les coups de pieds du player
 */
 
-var groupKicks;
+var groupAttacks;
 
-export default class Kick extends Phaser.Physics.Arcade.Sprite {
+export default class AttaqueEnnemie extends Phaser.Physics.Arcade.Sprite {
 
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
@@ -25,13 +25,13 @@ export default class Kick extends Phaser.Physics.Arcade.Sprite {
 
         console.log ("joueur en position"+ this.x + ","+ this.y + ", direction du tir: " ) ; 
 
-        var spr_kick = this.scene.groupKicks.create(this.x, this.y, sprite);
+        var spr_attack = this.scene.groupAttacks.create(this.x, this.y, sprite);
         
-        spr_kick.body.allowGravity = false;
-        spr_kick.setCollideWorldBounds(true);
+        spr_attack.body.allowGravity = false;
+        spr_attack.setCollideWorldBounds(true);
 
         setTimeout(() => {
-            spr_kick.destroy();
+            spr_attack.destroy();
         }, 500);
 
         

@@ -8,6 +8,7 @@
  * A FAIRE DANS LA CLASSE :
  * - mecaniques de coups, deplacement tween etc
 */
+import AttaqueEnnemie from "./AttaqueEnnemie.js";
 
 export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
 
@@ -26,6 +27,11 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
         this.setCollideWorldBounds(true);
 
         this.hasBeenHit = false;
+
+        this.timeFromLastAttack = 0;
+        this.cooldown = 1300;
+
+        this.spriteAttaque = 'hitbox';
 
     }
 
@@ -46,32 +52,28 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
 
     attaque() {
 
-        if (this.typeEnnemi === "esquive") {
-            this.highKick();
+        if (this.typeEnnemi === "distance") {
+            this.spriteAttaque = 'hitbox_player';
+        } 
 
-        } else if (this.typeEnnemi === "distance") {
-            this.baseballBat();
+        console.log("attaque ennemi");
 
-        } else if (this.typeEnnemi === "rapide") {
-            this.punch();
-        }
+        if (new Date().getTime() - this.timeFromLastAttack < this.cooldown){
+            return; 
+        } 
+
+        this.kick = new AttaqueEnnemie(this.scene, this.x, this.y, this.spriteAttaque);
+        this.kick.hit(this.spriteAttaque);
+
+        this.timeFromLastAttack = new Date().getTime();
     }
 
     dodge() {
 
     }
 
-    highKick() {
 
-    }
 
-    baseballBat() {
-
-    }
-
-    punch() {
-
-    }
 
     gettingHit(player) {
         console.log("hit !");

@@ -8,7 +8,7 @@
 */
 
 
-// Ensemble de variables relatives au joueur
+// ----- VARIABLES RELATIVES AU JOUEUR -----
 var dataPlayer = {
 
     // Position du joueur en tout temps donné
@@ -38,7 +38,7 @@ var dataPlayer = {
 }
 
 
-// Ensemble de variables relatives aux ascenseurs
+// ----- VARIABLES RELATIVES AUX ASCENSEURS -----
 var ascenseur = {
 
     toAscenseur1 : false,

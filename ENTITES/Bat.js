@@ -21,21 +21,11 @@ export default class Bat extends Phaser.Physics.Arcade.Sprite {
     }
     
 
-    hit(direction) {
+    hit(sprite) {
 
-        console.log ("joueur en position"+ this.x + ","+ this.y + ", direction du tir: " +direction) ; 
+        console.log ("joueur en position"+ this.x + ","+ this.y + ", direction du tir: ") ; 
 
-        var coefDirX;
-
-        if (direction === 'gauche') { 
-            coefDirX = -1;
-        } 
-
-        else if (direction === 'droite') { 
-            coefDirX = 1;
-        }
-
-        var spr_bat = this.scene.groupBats.create(this.x + (25 * coefDirX), this.y -4, 'hitbox');
+        var spr_bat = this.scene.groupBats.create(this.x, this.y, sprite);
         
         spr_bat.body.allowGravity = false;
         spr_bat.setCollideWorldBounds(true);

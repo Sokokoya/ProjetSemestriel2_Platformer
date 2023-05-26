@@ -99,8 +99,6 @@ export default class Tuto extends Phaser.Scene {
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
         this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
-        this.hitbox_player = this.physics.add.sprite(window.dataPlayer.x, window.dataPlayer.y, 'hitbox_player');
-        this.hitbox_player.body.setGravity(0);
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
@@ -120,6 +118,7 @@ export default class Tuto extends Phaser.Scene {
 
         this.groupKicks = this.physics.add.group();
         this.groupBats = this.physics.add.group();
+        this.groupAttacks = this.physics.add.group();
 
         this.enemies = this.physics.add.group();
 
@@ -149,6 +148,13 @@ export default class Tuto extends Phaser.Scene {
         this.physics.add.collider(this.groupBats, this.enemies, (bat, ennemi) => {
             ennemi.gettingHit(this.player);
             bat.destroy();
+        }, null, this);
+
+
+
+        this.physics.add.collider(this.groupAttacks, this.player, (attack) => {
+            this.player.gettingHit();
+            attack.destroy();
         }, null, this);
 
 
@@ -220,8 +226,14 @@ export default class Tuto extends Phaser.Scene {
             bat.destroy();
         }, null, this);
 
-        
-        this.hitbox_player.setPosition(window.dataPlayer.x, window.dataPlayer.y);
+
+        this.groupAttacks.getChildren().forEach(attack => {
+
+                this.physics.add.overlap(attack, this.player, () => {
+                    this.player.gettingHit();
+                    attack.destroy();
+                }, null, this);
+        });
     }
 
 

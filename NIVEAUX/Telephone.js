@@ -83,11 +83,10 @@ export default class Telephone extends Phaser.Scene {
         // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
         this.clavier = this.input.keyboard.createCursorKeys();
 
-        //touches personnalisées
-
 
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
+        
 
         // Ajout des hitbox nécéssaires
         this.hitbox_sortie = this.physics.add.sprite(800, 416, 'hitbox');
@@ -106,11 +105,13 @@ export default class Telephone extends Phaser.Scene {
         // Ajout des collisions entre le personnage et les murs / objets / sorties
         this.physics.add.collider(this.player, collisions);
 
-        this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
-            console.log("appel telephone");
-        }, null, this);
+        
 
         if (!window.dataPlayer.tutoDone) {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("go tuto");
+            }, null, this);
 
             //#TODO: rajouter demander si le joueur veut faire le tuto ou pas
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
@@ -122,6 +123,11 @@ export default class Telephone extends Phaser.Scene {
 
 
         } else if (!window.dataPlayer.shizuokaDone) {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("go shizuoka");
+            }, null, this);
+
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
                 this.scene.start("Shizuoka", {
                     x: 48,
@@ -131,6 +137,11 @@ export default class Telephone extends Phaser.Scene {
 
 
         } else if (!window.dataPlayer.chantierDone) {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("go chantier");
+            }, null, this);
+
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
                 this.scene.start("Chantier", {
                     x: 48,
@@ -140,6 +151,11 @@ export default class Telephone extends Phaser.Scene {
 
 
         } else if (!window.dataPlayer.batimentDone) {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("go batiment abandonne");
+            }, null, this);
+
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
                 this.scene.start("Batiment", {
                     x: 48,
@@ -149,6 +165,11 @@ export default class Telephone extends Phaser.Scene {
 
 
         } else if (!window.dataPlayer.hamamatsuDone) {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("go hamamatsu");
+            }, null, this);
+
             this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
                 this.scene.start("Hamamatsu", {
                     x: 48,
@@ -157,7 +178,12 @@ export default class Telephone extends Phaser.Scene {
             }, null, this);
 
 
-        } //#TODO : sinon, dernier dialogue avec le telephone qui signe la fin du jeu
+        } else {
+
+            this.physics.add.overlap(this.player, this.hitbox_telephone, function() {
+                console.log("fin du jeu");
+            }, null, this);
+        }
         
 
 

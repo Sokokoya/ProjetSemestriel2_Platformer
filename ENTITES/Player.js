@@ -22,6 +22,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         this.clavier = scene.input.keyboard.createCursorKeys();
 
+        this.keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+        this.keyZ = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+        this.keyE = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+        this.keyR = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
         scene.physics.world.enable(this);
         scene.add.existing(this);
         this.setCollideWorldBounds(true);
@@ -38,10 +43,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     updatePlayer() {
 
-        const keyA = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-        const keyZ = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
-        const keyE = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-        const keyR = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
+
 
         // Contôles du joueur horizontalement, le joueur ne peut pas se déplacer s'il est en pleine esquive
         if (!window.dataPlayer.isDodging) {
@@ -68,25 +70,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         }
 
         // si dodge (E)
-        if (Phaser.Input.Keyboard.JustDown(keyE)) {
+        if (Phaser.Input.Keyboard.JustDown(this.keyE)) {
             console.log("dodge");
             this.dodge();
         }
 
         // si kick (A)
-        if (Phaser.Input.Keyboard.JustDown(keyA)) {
+        if (Phaser.Input.Keyboard.JustDown(this.keyA)) {
             console.log("kick");
             this.highKick('hitbox');
         }
 
         // si baseball bat (Z)
-        if (Phaser.Input.Keyboard.JustDown(keyZ)) {
+        if (Phaser.Input.Keyboard.JustDown(this.keyZ)) {
             console.log("bat");
-            this.baseballBat();
+            this.baseballBat('hitbox_player');
         }
 
         // si lancer objet (R)
-        if (Phaser.Input.Keyboard.JustDown(keyR)) {
+        if (Phaser.Input.Keyboard.JustDown(this.keyR)) {
             console.log("lance objet");
             this.throw();
         }
@@ -94,6 +96,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
         window.dataPlayer.x = this.x;
         window.dataPlayer.y = this.y;
+
+
 
 
     }
@@ -168,7 +172,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         } 
 
         this.kick = new Kick(this.scene, this.x, this.y, sprite);
-        this.kick.hit(this.direction);
+        this.kick.hit(sprite);
 
         this.timeFromLastAttack = new Date().getTime();
     }
@@ -182,7 +186,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         } 
 
         this.bat = new Bat(this.scene, this.x, this.y, sprite);
-        this.bat.hit(this.direction);
+        this.bat.hit(sprite);
 
         this.timeFromLastAttack = new Date().getTime();
     }
@@ -194,7 +198,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     gettingHit() {
-        if (!isDodging) {
+        if (!window.dataPlayer.isDodging) {
+
 
             this.scene.scene.start(window.dataPlayer.checkpoint, {
                 x: window.dataPlayer.checkpointX,
