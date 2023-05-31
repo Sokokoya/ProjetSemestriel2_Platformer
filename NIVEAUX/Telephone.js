@@ -30,7 +30,7 @@ export default class Telephone extends Phaser.Scene {
     preload() {
 
         // Chargement des sprites de la protagoniste
-        this.load.spritesheet('keiko_idle', '../ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
+        this.load.spritesheet('spr_keiko', '../ASSETS/spr_keiko.png', {frameWidth: 32, frameHeight: 64});
 
         // Chargement des autres sprites
         this.load.spritesheet('hitbox', '../ASSETS/hitbox.png', {frameWidth: 64, frameHeight: 96});
@@ -99,7 +99,7 @@ export default class Telephone extends Phaser.Scene {
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
-        this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
+        this.player = new Player(this, this.posX, this.posY, 'spr_keiko');
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties

@@ -98,7 +98,7 @@ export default class Tuto extends Phaser.Scene {
 
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
-        this.player = new Player(this, this.posX, this.posY, 'keiko_idle');
+        this.player = new Player(this, this.posX, this.posY, 'spr_keiko');
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
