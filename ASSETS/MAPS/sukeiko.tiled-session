@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "niveau4_placeholder.tmx",
+    "activeFile": "map_niveau3.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -23,12 +23,34 @@
         "ascenceur_placeholder.tmx#tileset": {
             "scaleInDock": 1
         },
+        "map_niveau1.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 276,
+                "y": 966
+            }
+        },
+        "map_niveau1.tmx#tileset": {
+            "scaleInDock": 1
+        },
+        "map_niveau3.tmx": {
+            "scale": 1,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 734,
+                "y": 755.5
+            }
+        },
+        "map_niveau3.tmx#tileset": {
+            "scaleInDock": 1
+        },
         "niveau1_placeholder.tmx": {
             "scale": 0.125,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2044,
-                "y": 596
+                "x": 2244,
+                "y": 644
             }
         },
         "niveau1_placeholder.tmx#tileset": {
@@ -38,8 +60,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 2240.909090909091,
-                "y": 995.4545454545454
+                "x": 3519.69696969697,
+                "y": 640.9090909090909
             }
         },
         "niveau2_placeholder.tmx#tileset": {
@@ -49,8 +71,8 @@
             "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2822.727272727273,
-                "y": 1092.4242424242423
+                "x": 2237.878787878788,
+                "y": 722.7272727272726
             }
         },
         "niveau3_placeholder.tmx#tileset": {
@@ -60,8 +82,8 @@
             "scale": 0.33,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 595.4545454545455,
-                "y": 883.3333333333333
+                "x": 3837.878787878788,
+                "y": 640.9090909090909
             }
         },
         "niveau4_placeholder.tmx#tileset": {
@@ -89,6 +111,17 @@
         "tuto_placeholder.tmx#tileset": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tutoriel.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 558,
+                "y": 384.5
+            }
+        },
+        "tutoriel.tmx#tileset": {
+            "scaleInDock": 1
         }
     },
     "last.exportedFilePath": "C:/Users/game/Documents/GitHub/PS2/ASSETS/MAPS",
@@ -100,22 +133,22 @@
     "map.tileWidth": 16,
     "map.width": 280,
     "openFiles": [
+        "map_niveau1.tmx",
+        "tutoriel.tmx",
+        "map_niveau3.tmx"
+    ],
+    "project": "sukeiko.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "map_niveau1.tmx",
+        "tutoriel.tmx",
+        "map_niveau3.tmx",
         "tuto_placeholder.tmx",
         "niveau1_placeholder.tmx",
         "niveau2_placeholder.tmx",
         "niveau3_placeholder.tmx",
         "niveau4_placeholder.tmx",
         "ascenceur_placeholder.tmx"
-    ],
-    "project": "sukeiko.tiled-project",
-    "property.type": "bool",
-    "recentFiles": [
-        "tuto_placeholder.tmx",
-        "niveau1_placeholder.tmx",
-        "niveau2_placeholder.tmx",
-        "niveau3_placeholder.tmx",
-        "ascenceur_placeholder.tmx",
-        "niveau4_placeholder.tmx"
     ],
     "tileset.embedInMap": true,
     "tileset.tileSize": {
