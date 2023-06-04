@@ -1,6 +1,6 @@
 /**
  * data.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant toutes les valeurs utilisées au long du projet. Celles-ci
  * sont récupérables depuis nimporte quel autre fichier et peuvent être modifiées.

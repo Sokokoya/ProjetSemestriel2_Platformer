@@ -1,2 +1,2 @@
-# PS2
+# SUKEIKO
  ETPA - Projet Semestriel 2

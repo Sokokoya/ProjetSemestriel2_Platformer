@@ -2,7 +2,7 @@
  * AttaqueEnnemie.js --- Solenn Cattin 
  * VERSION ALPHA
  * 
- * Fichier comportant la classe AttaqueEnnemie permettant de créer les coups de pieds du player
+ * Fichier comportant la classe AttaqueEnnemie permettant de créer les attaques ennemies
 */
 
 var groupAttacks;

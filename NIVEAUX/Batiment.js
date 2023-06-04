@@ -54,6 +54,8 @@ export default class Batiment extends Phaser.Scene {
 
         // ----- AFFICHAGE DE LA SCENE -----
 
+        this.add.image(448, 224, "background").setScrollFactor(0);
+
         // Chargement des calques
         const gameMap = this.add.tilemap('map_niveau3');
 

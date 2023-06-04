@@ -1,6 +1,6 @@
 /**
  * EcranTitre.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe EcranTitre, affichant l'écran titre du jeu, et passant au premier niveau 
  * une fois que la touche espace est appuyée.

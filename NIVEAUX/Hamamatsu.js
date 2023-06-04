@@ -1,11 +1,10 @@
 /**
  * Hamamatsu.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe Hamamatsu, quatrième et dernier niveau du jeu
  * 
  * 
- * A FAIRE DANS LA SCENE :
 */
 
 import Player from '../ENTITES/Player.js';
@@ -54,6 +53,8 @@ export default class Hamamatsu extends Phaser.Scene {
         window.dataPlayer.checkpointY = this.posY;
 
         // ----- AFFICHAGE DE LA SCENE -----
+
+        this.add.image(448, 224, "background").setScrollFactor(0);
 
         // Chargement des calques
         const gameMap = this.add.tilemap('map_niveau4');

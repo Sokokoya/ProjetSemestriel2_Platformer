@@ -1,11 +1,9 @@
 /**
  * Tuto.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la scène Tuto
  * 
- * 
- * A FAIRE DANS LA SCENE :
 */
 
 import Player from '../ENTITES/Player.js';
@@ -41,6 +39,7 @@ export default class Tuto extends Phaser.Scene {
 
         // Chargement de la map
         this.load.image('tileset', '../ASSETS/tileset.png');
+        this.load.image('background', '../ASSETS/background.png');
         this.load.tilemapTiledJSON('map_tuto', '../ASSETS/MAPS/map_tutoriel.json');
 
         
@@ -63,6 +62,8 @@ export default class Tuto extends Phaser.Scene {
 
 
         // ----- AFFICHAGE DE LA SCENE -----
+
+        this.add.image(448, 224, "background").setScrollFactor(0);
 
         // Chargement des calques
         const gameMap = this.add.tilemap('map_tuto');

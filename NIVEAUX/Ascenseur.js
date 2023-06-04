@@ -1,11 +1,9 @@
 /**
  * Ascenseur.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe Ascenseur, utile pour le niveau 3
  * 
- * 
- * A FAIRE DANS LA SCENE :
 */
 
 import Player from '../ENTITES/Player.js';
