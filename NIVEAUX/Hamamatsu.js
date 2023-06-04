@@ -32,8 +32,8 @@ export default class Hamamatsu extends Phaser.Scene {
         // Chargement des sprites de la protagoniste
         this.load.spritesheet('keiko_idle', '../ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
 
-        this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_niveau4', '../ASSETS/MAPS/niveau4_placeholder.json');
+        this.load.image('tileset', '../ASSETS/tileset.png');
+        this.load.tilemapTiledJSON('map_niveau4', '../ASSETS/MAPS/map_niveau4.json');
 
         
     }
@@ -63,8 +63,8 @@ export default class Hamamatsu extends Phaser.Scene {
             "tileset"
         );
 
-        const fond = gameMap.createLayer(
-            "fond",
+        const plan3 = gameMap.createLayer(
+            "plan_3",
             gameTileset
         );
 
@@ -72,6 +72,24 @@ export default class Hamamatsu extends Phaser.Scene {
             "collisions",
             gameTileset
         );
+
+        const plan2 = gameMap.createLayer(
+            "plan_2",
+            gameTileset
+        );
+
+        //#TODO: changer ici en calque objet
+      /*  const ennemisLayer = gameMap.createLayer(
+            "ennemis",
+            gameTileset
+        );*/
+
+        const plan1 = gameMap.createLayer(
+            "plan_1",
+            gameTileset
+        );
+
+        
 
 
 

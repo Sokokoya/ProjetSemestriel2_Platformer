@@ -58,7 +58,7 @@ export default class EcranTitre extends Phaser.Scene {
         // Changement vers la premiere scene dès que le joueur appuie sur espace
         if (Phaser.Input.Keyboard.JustDown(this.clavier.space)) {
             
-            this.scene.start("Telephone", {
+            this.scene.start("Tuto", {
                 x: 48,
                 y: 448
             });

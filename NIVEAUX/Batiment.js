@@ -1,12 +1,9 @@
 /**
  * Batiment.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe Batiment, troisième niveau du jeu
  * 
- * 
- * A FAIRE DANS LA SCENE :
- * - Reussir a tp entre chaque asenseurs
 */
 
 import Player from '../ENTITES/Player.js';
@@ -33,8 +30,8 @@ export default class Batiment extends Phaser.Scene {
         // Chargement des sprites de la protagoniste
         this.load.spritesheet('keiko_idle', '../ASSETS/keiko_idle.png', {frameWidth: 32, frameHeight: 64});
 
-        this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_niveau3', '../ASSETS/MAPS/niveau3_placeholder.json');
+        this.load.image('tileset', '../ASSETS/tileset.png');
+        this.load.tilemapTiledJSON('map_niveau3', '../ASSETS/MAPS/map_niveau3.json');
 
         
     }
@@ -70,15 +67,23 @@ export default class Batiment extends Phaser.Scene {
             gameTileset
         );
 
-        const objets = gameMap.createLayer(
-            "objets",
-            gameTileset
-        );
-
         const collisions = gameMap.createLayer(
             "collisions",
             gameTileset
         );
+
+        const autre = gameMap.createLayer(
+            "autre",
+            gameTileset
+        );
+
+        //#TODO: changer ici en calque objet
+      /*  const ennemisLayer = gameMap.createLayer(
+            "ennemis",
+            gameTileset
+        );*/
+
+        
 
 
 
@@ -87,8 +92,6 @@ export default class Batiment extends Phaser.Scene {
 
         // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
         this.clavier = this.input.keyboard.createCursorKeys();
-
-        //touches personnalisées
 
 
         // Ajout des collisions avec les calques
@@ -122,9 +125,9 @@ export default class Batiment extends Phaser.Scene {
         this.physics.add.collider(this.player, collisions);
 
         this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
-            this.scene.start("Telephone", {
+            this.scene.start("Hamamatsu", {
                 x: 48,
-                y: 448
+                y: 1088
             });
         }, null, this);
 

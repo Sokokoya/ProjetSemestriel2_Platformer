@@ -29,13 +29,19 @@ export default class Tuto extends Phaser.Scene {
     // -----------------------------------------------------------------------------------------
 
     preload() {
+        // Chargement des sprites de la protagoniste
+        this.load.spritesheet('spr_keiko', '../ASSETS/spr_keiko.png', {frameWidth: 32, frameHeight: 64});
+
+        // Chargement des autres sprites
+        this.load.spritesheet('hitbox', '../ASSETS/hitbox.png', {frameWidth: 64, frameHeight: 96});
+        this.load.spritesheet('hitbox_player', '../ASSETS/hitbox_player.png', {frameWidth: 96, frameHeight: 96});
 
         // Chargement des sprites ennemis
-        this.load.spritesheet('ennemi1', '../ASSETS/ennemi1.png', {frameWidth: 32, frameHeight: 64});
+        this.load.spritesheet('ennemi1', '../ASSETS/spr_ennemi1.png', {frameWidth: 32, frameHeight: 64});
 
         // Chargement de la map
-        this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_tuto', '../ASSETS/MAPS/tuto_placeholder.json');
+        this.load.image('tileset', '../ASSETS/tileset.png');
+        this.load.tilemapTiledJSON('map_tuto', '../ASSETS/MAPS/map_tutoriel.json');
 
         
     }
@@ -66,13 +72,19 @@ export default class Tuto extends Phaser.Scene {
             "tileset"
         );
 
-        const fond = gameMap.createLayer(
-            "fond",
+        const collisions = gameMap.createLayer(
+            "collisions",
             gameTileset
         );
 
-        const collisions = gameMap.createLayer(
-            "collisions",
+        //#TODO: changer ici en calque objet
+      /*  const ennemisLayer = gameMap.createLayer(
+            "ennemis",
+            gameTileset
+        );*/
+
+        const plan1 = gameMap.createLayer(
+            "plan_1",
             gameTileset
         );
 
@@ -105,9 +117,9 @@ export default class Tuto extends Phaser.Scene {
         this.physics.add.collider(this.player, collisions);
 
         this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
-            this.scene.start("Telephone", {
+            this.scene.start("Shizuoka", {
                 x: 48,
-                y: 448
+                y: 800
             });
         }, null, this);
 

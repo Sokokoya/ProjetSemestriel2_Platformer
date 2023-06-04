@@ -36,7 +36,7 @@ export default class Telephone extends Phaser.Scene {
         this.load.spritesheet('hitbox', '../ASSETS/hitbox.png', {frameWidth: 64, frameHeight: 96});
         this.load.spritesheet('hitbox_player', '../ASSETS/hitbox_player.png', {frameWidth: 96, frameHeight: 96});
 
-        this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
+        this.load.image('tileset_p', '../ASSETS/MAPS/tileset_placeholder.png');
         this.load.tilemapTiledJSON('map_telephone', '../ASSETS/MAPS/telephone_placeholder.json');
 
         
@@ -57,7 +57,7 @@ export default class Telephone extends Phaser.Scene {
 
         const gameTileset = gameMap.addTilesetImage(
             "tileset",
-            "tileset"
+            "tileset_p"
         );
 
         const fond = gameMap.createLayer(

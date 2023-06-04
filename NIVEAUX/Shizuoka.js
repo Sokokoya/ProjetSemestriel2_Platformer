@@ -31,8 +31,8 @@ export default class Shizuoka extends Phaser.Scene {
 
         
 
-        this.load.image('tileset', '../ASSETS/MAPS/tileset_placeholder.png');
-        this.load.tilemapTiledJSON('map_niveau1', '../ASSETS/MAPS/niveau1_placeholder.json');
+        this.load.image('tileset', '../ASSETS/tileset.png');
+        this.load.tilemapTiledJSON('map_niveau1', '../ASSETS/MAPS/map_niveau1.json');
 
         
     }
@@ -62,13 +62,29 @@ export default class Shizuoka extends Phaser.Scene {
             "tileset"
         );
 
-        const fond = gameMap.createLayer(
-            "fond",
+        const plan3 = gameMap.createLayer(
+            "plan_3",
             gameTileset
         );
 
         const collisions = gameMap.createLayer(
             "collisions",
+            gameTileset
+        );
+
+        const plan2 = gameMap.createLayer(
+            "plan_2",
+            gameTileset
+        );
+
+        //#TODO: changer ici en calque objet
+      /*  const ennemisLayer = gameMap.createLayer(
+            "ennemis",
+            gameTileset
+        );*/
+
+        const plan1 = gameMap.createLayer(
+            "plan_1",
             gameTileset
         );
 
@@ -101,9 +117,9 @@ export default class Shizuoka extends Phaser.Scene {
         this.physics.add.collider(this.player, collisions);
 
         this.physics.add.overlap(this.player, this.hitbox_sortie, function() {
-            this.scene.start("Telephone", {
+            this.scene.start("Batiment", {
                 x: 48,
-                y: 448
+                y: 1216
             });
         }, null, this);
 
