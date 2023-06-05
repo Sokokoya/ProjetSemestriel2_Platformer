@@ -6,6 +6,7 @@
  * 
 */
 
+import Ennemi from '../ENTITES/Ennemi.js';
 import Player from '../ENTITES/Player.js';
 
 export default class Shizuoka extends Phaser.Scene {
@@ -87,6 +88,7 @@ export default class Shizuoka extends Phaser.Scene {
             "plan_1",
             gameTileset
         );
+        plan1.setDepth(5);
 
 
 
@@ -111,6 +113,7 @@ export default class Shizuoka extends Phaser.Scene {
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
         this.player = new Player(this, this.posX, this.posY, 'spr_keiko');
+        this.player.setDepth(4);
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
@@ -125,6 +128,12 @@ export default class Shizuoka extends Phaser.Scene {
 
 
         // ----- AFFICHAGE DES ENNEMIES -----
+        this.enemies = this.physics.add.group();
+
+        gameMap.getObjectLayer('ennemis').objects.forEach((objet) => {
+            this.enemies.add(new Ennemi(this, objet.x, objet.y, "ennemi1"));
+            this.physics.add.collider(this.enemies, collisions);
+        });
 
 
         // ----- AFFICHAGE DE L'UI -----

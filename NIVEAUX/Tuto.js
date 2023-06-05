@@ -36,6 +36,9 @@ export default class Tuto extends Phaser.Scene {
 
         // Chargement des sprites ennemis
         this.load.spritesheet('ennemi1', '../ASSETS/spr_ennemi1.png', {frameWidth: 32, frameHeight: 64});
+        this.load.spritesheet('ennemi2', '../ASSETS/spr_ennemi1.png', {frameWidth: 32, frameHeight: 64});
+        this.load.spritesheet('ennemi3', '../ASSETS/spr_ennemi1.png', {frameWidth: 32, frameHeight: 64});
+        this.load.spritesheet('ennemi4  ', '../ASSETS/spr_ennemi1.png', {frameWidth: 32, frameHeight: 64});
 
         // Chargement de la map
         this.load.image('tileset', '../ASSETS/tileset.png');
@@ -59,6 +62,7 @@ export default class Tuto extends Phaser.Scene {
         window.dataPlayer.checkpoint = "Tuto";
         window.dataPlayer.checkpointX = this.posX;
         window.dataPlayer.checkpointY = this.posY;
+        console.log(this.posX, ' ', this.posY);
 
 
         // ----- AFFICHAGE DE LA SCENE -----
@@ -77,6 +81,7 @@ export default class Tuto extends Phaser.Scene {
             "collisions",
             gameTileset
         );
+        collisions.setDepth(2);
 
         //#TODO: changer ici en calque objet
       /*  const ennemisLayer = gameMap.createLayer(
@@ -88,6 +93,7 @@ export default class Tuto extends Phaser.Scene {
             "plan_1",
             gameTileset
         );
+        plan1.setDepth(5);
 
 
 
@@ -112,6 +118,7 @@ export default class Tuto extends Phaser.Scene {
         // ----- AFFICHAGE ET PROPRIETES DE LA PROTAGONISTE -----
 
         this.player = new Player(this, this.posX, this.posY, 'spr_keiko');
+        this.player.setDepth(4);
 
 
         // Ajout des collisions entre le personnage et les murs / objets / sorties
@@ -135,22 +142,10 @@ export default class Tuto extends Phaser.Scene {
 
         this.enemies = this.physics.add.group();
 
-        let posEnnemis = [
-            {x: 480, y: 288},
-            {x: 672, y: 416},
-            {x: 928, y: 384}
-        ];
-
-        for (let i=0; i<3; i++) {
-            let x = posEnnemis[i].x;
-            let y = posEnnemis[i].y;
-
-            let ennemi = new Ennemi(this, x, y, "ennemi1", "esquive", this.enemies);
-            this.enemies.add(ennemi);
-            ennemi.body.setImmovable(true);
-            
-        }
-        this.physics.add.collider (this.enemies, collisions);
+        gameMap.getObjectLayer('ennemis').objects.forEach((objet) => {
+            this.enemies.add(new Ennemi(this, objet.x, objet.y, "ennemi1"));
+            this.physics.add.collider(this.enemies, collisions);
+        });
 
 
         this.physics.add.collider(this.groupKicks, this.enemies, (kick, ennemi) => {
@@ -163,12 +158,6 @@ export default class Tuto extends Phaser.Scene {
             bat.destroy();
         }, null, this);
 
-
-
-        this.physics.add.collider(this.groupAttacks, this.player, (attack) => {
-            this.player.gettingHit();
-            attack.destroy();
-        }, null, this);
 
 
         // ----- AFFICHAGE DE L'UI -----

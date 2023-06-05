@@ -78,7 +78,7 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
     gettingHit(player) {
         console.log("hit !");
         this.hasBeenHit = true;
-        this.enemies.remove(this);
+        this.scene.enemies.remove(this);
         this.destroy();
     }
 
