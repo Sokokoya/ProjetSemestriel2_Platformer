@@ -25,7 +25,7 @@ var config = {
         arcade: {
             //#TODO: changer la gravité ici pour rendre au mieux possible
             gravity: { y: 1000 },
-            debug: false
+            debug: true
         }
     },
 

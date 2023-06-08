@@ -7,6 +7,7 @@
 */
 
 import Player from '../ENTITES/Player.js';
+import Ennemi from '../ENTITES/Ennemi.js';
 
 export default class Batiment extends Phaser.Scene {
 
@@ -245,6 +246,12 @@ export default class Batiment extends Phaser.Scene {
 
 
         // ----- AFFICHAGE DES ENNEMIES -----
+        this.enemies = this.physics.add.group();
+
+        gameMap.getObjectLayer('ennemis').objects.forEach((objet) => {
+            this.enemies.add(new Ennemi(this, objet.x, objet.y, "ennemi1"));
+            this.physics.add.collider(this.enemies, collisions);
+        });
 
 
         // ----- AFFICHAGE DE L'UI -----

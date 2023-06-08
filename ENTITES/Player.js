@@ -198,14 +198,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
 
     gettingHit() {
-        if (!window.dataPlayer.isDodging) {
+        
 
 
-            this.scene.scene.start(window.dataPlayer.checkpoint, {
-                x: window.dataPlayer.checkpointX,
-                y: window.dataPlayer.checkPointY
-            });
-        }
+        this.scene.scene.start(window.dataPlayer.checkpoint, {
+            x: window.dataPlayer.checkpointX,
+            y: window.dataPlayer.checkpointY
+        });
+        
     }
 
     hit(ennemi, attaque) {

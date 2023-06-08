@@ -4,7 +4,7 @@
   <image source="../tileset.png" width="816" height="752"/>
  </tileset>
  <imagelayer id="2" name="guide" visible="0" opacity="0.5">
-  <image source="guide_lvl1.png" width="4480" height="1280"/>
+  <image source="guide_lvl1.png"/>
  </imagelayer>
  <layer id="5" name="plan_3" width="280" height="80">
   <data encoding="csv">
@@ -259,16 +259,13 @@
 </data>
  </layer>
  <objectgroup id="6" name="ennemis">
-  <object id="1" x="115" y="924">
+  <object id="1" x="115" y="931">
    <point/>
   </object>
-  <object id="2" x="415" y="819">
+  <object id="2" x="670" y="820">
    <point/>
   </object>
   <object id="3" x="545" y="689">
-   <point/>
-  </object>
-  <object id="6" x="544" y="944">
    <point/>
   </object>
   <object id="7" x="477" y="941">
@@ -277,13 +274,7 @@
   <object id="8" x="339" y="1075">
    <point/>
   </object>
-  <object id="9" x="246" y="1069">
-   <point/>
-  </object>
-  <object id="10" x="928" y="1070">
-   <point/>
-  </object>
-  <object id="11" x="1329" y="946">
+  <object id="10" x="752" y="1041">
    <point/>
   </object>
   <object id="12" x="1537" y="946">
@@ -292,25 +283,13 @@
   <object id="13" x="1665" y="833">
    <point/>
   </object>
-  <object id="14" x="1486" y="816">
-   <point/>
-  </object>
-  <object id="15" x="1411" y="703">
-   <point/>
-  </object>
   <object id="16" x="1681" y="703">
    <point/>
   </object>
   <object id="17" x="1456" y="576">
    <point/>
   </object>
-  <object id="18" x="2432" y="1021">
-   <point/>
-  </object>
   <object id="19" x="2557" y="900">
-   <point/>
-  </object>
-  <object id="20" x="2609" y="898">
    <point/>
   </object>
   <object id="21" x="1824" y="831">
@@ -322,13 +301,10 @@
   <object id="23" x="2958" y="898">
    <point/>
   </object>
-  <object id="24" x="3281" y="819">
+  <object id="24" x="3281" y="799">
    <point/>
   </object>
   <object id="25" x="3806" y="926">
-   <point/>
-  </object>
-  <object id="26" x="3874" y="926">
    <point/>
   </object>
   <object id="27" x="4333" y="1086">

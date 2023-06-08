@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "map_niveau3.tmx",
+    "activeFile": "map_niveau4.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -24,25 +24,42 @@
             "scaleInDock": 1
         },
         "map_niveau1.tmx": {
-            "scale": 0.75,
-            "selectedLayer": 1,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 1,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 276,
-                "y": 966
+                "x": 3787,
+                "y": 814
             }
         },
         "map_niveau1.tmx#tileset": {
             "scaleInDock": 1
         },
         "map_niveau3.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
             "scale": 1,
-            "selectedLayer": 1,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 734,
-                "y": 755.5
+                "x": 4187,
+                "y": 887
             }
         },
         "map_niveau3.tmx#tileset": {
+            "scaleInDock": 1
+        },
+        "map_niveau4.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 7041.333333333333,
+                "y": 670.6666666666665
+            }
+        },
+        "map_niveau4.tmx#tileset": {
             "scaleInDock": 1
         },
         "niveau1_placeholder.tmx": {
@@ -114,10 +131,10 @@
         },
         "tutoriel.tmx": {
             "scale": 1,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 558,
-                "y": 384.5
+                "x": 759,
+                "y": 300
             }
         },
         "tutoriel.tmx#tileset": {
@@ -133,16 +150,18 @@
     "map.tileWidth": 16,
     "map.width": 280,
     "openFiles": [
-        "map_niveau1.tmx",
         "tutoriel.tmx",
-        "map_niveau3.tmx"
+        "map_niveau1.tmx",
+        "map_niveau3.tmx",
+        "map_niveau4.tmx"
     ],
     "project": "sukeiko.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "map_niveau1.tmx",
         "tutoriel.tmx",
+        "map_niveau1.tmx",
         "map_niveau3.tmx",
+        "map_niveau4.tmx",
         "tuto_placeholder.tmx",
         "niveau1_placeholder.tmx",
         "niveau2_placeholder.tmx",
