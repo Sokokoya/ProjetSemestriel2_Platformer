@@ -51,6 +51,8 @@ export default class Shizuoka extends Phaser.Scene {
         window.dataPlayer.checkpointX = this.posX;
         window.dataPlayer.checkpointY = this.posY;
 
+
+        
         // ----- AFFICHAGE DE LA SCENE -----
 
         this.add.image(448, 224, "background").setScrollFactor(0);
@@ -78,12 +80,6 @@ export default class Shizuoka extends Phaser.Scene {
             gameTileset
         );
 
-        //#TODO: changer ici en calque objet
-      /*  const ennemisLayer = gameMap.createLayer(
-            "ennemis",
-            gameTileset
-        );*/
-
         const plan1 = gameMap.createLayer(
             "plan_1",
             gameTileset
@@ -92,17 +88,15 @@ export default class Shizuoka extends Phaser.Scene {
 
 
 
-
         // ----- PROPRIETES DU JEU -----
 
         // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
         this.clavier = this.input.keyboard.createCursorKeys();
 
-        //touches personnalisées
-
 
         // Ajout des collisions avec les calques
         collisions.setCollisionByExclusion(-1, true);
+
 
         // Ajout des hitbox nécéssaires
         this.hitbox_sortie = this.physics.add.sprite(4416, 1040, 'hitbox');
@@ -127,19 +121,71 @@ export default class Shizuoka extends Phaser.Scene {
         }, null, this);
 
 
-        // ----- AFFICHAGE DES ENNEMIES -----
-        this.enemies = this.physics.add.group();
 
-        gameMap.getObjectLayer('ennemis').objects.forEach((objet) => {
-            this.enemies.add(new Ennemi(this, objet.x, objet.y, "ennemi1"));
-            this.physics.add.collider(this.enemies, collisions);
+        // ----- AFFICHAGE DES ENNEMIES -----
+
+        // Création des animations
+        this.anims.create({
+            key: 'ennemi1_idle',
+            frames: this.anims.generateFrameNumbers("ennemi1", { start: 0, end: 3 }),
+            frameRate: 7,
+            repeat: -1
         });
+
+        this.anims.create({
+            key: 'ennemi2_idle',
+            frames: this.anims.generateFrameNumbers("ennemi2", { start: 0, end: 3 }),
+            frameRate: 7,
+            repeat: -1
+        });
+        
+
+        // Création de chaque ennemi en fonction de son skin
+        this.groupKicks = this.physics.add.group();
+        this.groupAttacks = this.physics.add.group();
+
+        this.enemies = this.physics.add.group();
+        this.typeEnnemi;
+        
+        gameMap.getObjectLayer('ennemi1').objects.forEach((objet) => {
+            this.typeEnnemi = 1;
+        
+            const ennemi = new Ennemi(this, objet.x, objet.y, "ennemi1");
+            this.enemies.add(ennemi);
+            this.physics.add.collider(this.enemies, collisions);
+        
+            ennemi.anims.play("ennemi1_idle", true);
+        });
+        
+        gameMap.getObjectLayer('ennemi2').objects.forEach((objet) => {
+            this.typeEnnemi = 2;
+        
+            const ennemi = new Ennemi(this, objet.x, objet.y, "ennemi2");
+            this.enemies.add(ennemi);
+            this.physics.add.collider(this.enemies, collisions);
+        
+            ennemi.anims.play("ennemi2_idle", true);
+        });
+
+
+        // Ajout d'un collider entre les attaques et les ennemis
+        this.physics.add.collider(this.groupKicks, this.enemies, (kick, ennemi) => {
+            ennemi.gettingHit(this.player);
+            kick.destroy();
+        }, null, this);
+
 
 
         // ----- AFFICHAGE DE L'UI -----
 
+        this.chrono = this.add.text(150, 75 , "Temps : 0", {font: "16px Arial", fill: "#ffffff"});
+        this.chrono.setScrollFactor(0).setDepth(6);
+        this.timer = 0;
+
+
 
         // ----- CAMERA -----
+
         // Redimensions du jeu selon le fichier Tiled
         this.physics.world.setBounds(0, 0, 4480, 1280);
         this.cameras.main.setBounds(0, 0, 4480, 1280);
@@ -159,7 +205,52 @@ export default class Shizuoka extends Phaser.Scene {
 
     update() {
 
+        // Update constante des mouvements et des action du joueur
         this.player.updatePlayer();
+
+
+        // Ennemi detruit s'il est touché
+        this.enemies.getChildren().forEach(ennemi => {
+
+            ennemi.updateEnnemi();
+            
+            if (ennemi.hasBeenHit) {
+                ennemi.destroy();
+            }
+        });
+
+        this.groupKicks.getChildren().forEach(kick => {
+            this.enemies.getChildren().forEach(ennemi => {
+                this.physics.add.overlap(kick, ennemi, () => {
+                    ennemi.gettingHit(this.player);
+                    ennemi.destroy();
+                    kick.destroy();
+                }, null, this);
+            });
+        });
+
+
+        // Si le joueur se fait toucher
+        this.groupAttacks.getChildren().forEach(attack => {
+
+                this.physics.add.overlap(attack, this.player, () => {
+                    this.player.gettingHit();
+                    attack.destroy();
+                }, null, this);
+        });
+
+
+        // Update du chronometre en temps réel
+        const delta = this.game.loop.delta;
+		this.timer += delta;
+
+		let ms = Math.floor(this.timer % 1000);
+		let s = Math.floor(this.timer / 1000) % 60;
+		let m = Math.floor(this.timer / (60 * 1000)) % 60;
+		let h = Math.floor(this.timer / (60 * 60 * 1000)) % 99;
+
+        let texte = `Time : ${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${s.toString().padStart(2, "0")}.${ms.toString().padStart(3, "0")}`;
+        this.chrono.setText(texte).setFontFamily('Arial').setFontSize(25);
     }
 
 

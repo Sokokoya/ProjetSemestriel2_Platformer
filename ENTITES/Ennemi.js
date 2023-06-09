@@ -1,6 +1,6 @@
 /**
  * Ennemi.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe Ennemi,
  * 
@@ -15,7 +15,6 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, texture, type, enemies) {
         super(scene, x, y, texture);
 
-        // trois types differents
         this.typeEnnemi = type;
         this.scene = scene;
         this.enemies = enemies;
@@ -29,34 +28,54 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
         this.hasBeenHit = false;
 
         this.timeFromLastAttack = 0;
-        this.cooldown = 1300;
+        this.cooldown = 2000;
 
         this.spriteAttaque = 'hitbox';
 
+        //this.createAnimation();
+
     }
+
+    getTypeEnnemi() {
+        return this.typeEnnemi;
+    }
+
+    createAnimation(){
+		this.scene.anims.create({
+			key: 'ennemi_idle',
+			frames: this.scene.anims.generateFrameNumbers(this.typeEnnemi, {start:0, end:3}),
+			frameRate: 8,
+			repeat: -1,
+		});
+		this.anims.play("ennemi_idle",true);
+	}
 
 
     updateEnnemi(player) {
-
-        // déplacement
-
-        // si le joueur rentre dans la range de l'ennemi, l'ennemi attaque en fonction de son type
-
+        
         this.attaque();
 
+        if (this.typeEnnemi === "ennemi1") {
+            this.anims.play("ennemi1", true);
 
-        //si le type est "esquive", on peut dodge
+        } else if (this.typeEnnemi === "ennemi2") {
+            this.anims.play("ennemi2", true);
+
+        } else if (this.typeEnnemi === "ennemi3") {
+            this.anims.play("ennemi3", true);
+
+        } else if (this.typeEnnemi === "ennemi4") {
+            this.anims.play("ennemi4", true);
+        } 
+        
+        
+
 
     }
     
 
     attaque() {
 
-        if (this.typeEnnemi === "distance") {
-            this.spriteAttaque = 'hitbox_player';
-        } 
-
-        console.log("attaque ennemi");
 
         if (new Date().getTime() - this.timeFromLastAttack < this.cooldown){
             return; 
@@ -66,10 +85,6 @@ export default class Ennemi extends Phaser.Physics.Arcade.Sprite {
         this.kick.hit(this.spriteAttaque);
 
         this.timeFromLastAttack = new Date().getTime();
-    }
-
-    dodge() {
-
     }
 
 

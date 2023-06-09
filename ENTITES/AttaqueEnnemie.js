@@ -1,6 +1,6 @@
 /**
  * AttaqueEnnemie.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe AttaqueEnnemie permettant de créer les attaques ennemies
 */
@@ -23,7 +23,6 @@ export default class AttaqueEnnemie extends Phaser.Physics.Arcade.Sprite {
 
     hit(sprite) {
 
-        console.log ("joueur en position"+ this.x + ","+ this.y + ", direction du tir: " ) ; 
 
         var spr_attack = this.scene.groupAttacks.create(this.x, this.y, sprite);
         

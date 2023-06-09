@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="480" height="80" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="53">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="480" height="80" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="57">
+ <editorsettings>
+  <export target="map_niveau4.json" format="json"/>
+ </editorsettings>
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" tilecount="2397" columns="51">
   <image source="../tileset.png" width="816" height="752"/>
  </tileset>
  <imagelayer id="2" name="guide" visible="0" opacity="0.5">
-  <image source="guide_lvl4.png" width="7680" height="1080"/>
+  <image source="guide_lvl4.png"/>
  </imagelayer>
  <layer id="3" name="plan_3" width="480" height="80">
   <data encoding="csv">
@@ -258,20 +261,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="ennemis">
+ <objectgroup id="6" name="ennemi1">
   <object id="1" x="503" y="1069">
-   <point/>
-  </object>
-  <object id="2" x="611" y="860">
-   <point/>
-  </object>
-  <object id="3" x="846" y="1084">
-   <point/>
-  </object>
-  <object id="4" x="1032" y="1092">
-   <point/>
-  </object>
-  <object id="5" x="1244" y="1090">
    <point/>
   </object>
   <object id="6" x="1410" y="1056">
@@ -413,6 +404,24 @@
    <point/>
   </object>
   <object id="52" x="7420" y="1008">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="7" name="ennemi2">
+  <object id="56" x="845" y="1065">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="ennemi3">
+  <object id="55" x="1029" y="1062">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="ennemi4">
+  <object id="53" x="605" y="858">
+   <point/>
+  </object>
+  <object id="54" x="1243" y="1073">
    <point/>
   </object>
  </objectgroup>

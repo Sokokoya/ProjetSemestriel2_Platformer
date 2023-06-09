@@ -1,6 +1,6 @@
 /**
  * Kick.js --- Solenn Cattin 
- * VERSION ALPHA
+ * VERSION BETA
  * 
  * Fichier comportant la classe Kick permettant de créer les coups de pieds du player
 */
@@ -22,8 +22,6 @@ export default class Kick extends Phaser.Physics.Arcade.Sprite {
     
 
     hit(sprite) {
-
-        console.log ("joueur en position"+ this.x + ","+ this.y + ", direction du tir: " ) ; 
 
         var spr_kick = this.scene.groupKicks.create(this.x, this.y, sprite);
         

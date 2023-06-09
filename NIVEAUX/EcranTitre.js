@@ -39,31 +39,23 @@ export default class EcranTitre extends Phaser.Scene {
 
     create() {
 
-        // Création de la variable clavier, permettant d'utiliser les touches de celui-ci
-        this.clavier = this.input.keyboard.createCursorKeys();
+        // Création d'un texte interactif pour commencer le jeu
+        const texte = this.add.text(420, 350, "play", {
+			fontSize: "24px",
+			color: "#000000"
+		});
+		texte.setInteractive();
+		
+		texte.on("pointerup", () => {
+			this.scene.start("Tuto", {
+                x: 48,
+                y: 448
+            });
+		});
 
         // Ajout de l'image du menu à l'écran
         this.add.image(448, 224, "image_menu");
 
     }
-
-
-
-    // -----------------------------------------------------------------------------------------
-    // ----------------------------------- FONCTION UPDATE -------------------------------------
-    // -----------------------------------------------------------------------------------------
-
-    update() {
-
-        // Changement vers la premiere scene dès que le joueur appuie sur espace
-        if (Phaser.Input.Keyboard.JustDown(this.clavier.space)) {
-            
-            this.scene.start("Tuto", {
-                x: 48,
-                y: 448
-            });
-        }
-    }
-
 
 }
